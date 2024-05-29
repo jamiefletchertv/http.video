@@ -1,7 +1,7 @@
 # http.video
 Repository contains tools, tips and tricks i've collected for media streaming. Taking inspiration from https://awesome.video I wanted to share resources I use regularly.
 
-## Media Preparation - *Encoding, Packaging & Encrypting* 
+## [Media Preparation - *Encoding, Packaging & Encryption*](./docs/media-preparation/media-preparation.md) 
 - [Bento4](https://github.com/axiomatic-systems/Bento4)
 - [EventMessageTrack](https://github.com/unifiedstreaming/event-message-track)
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg)
@@ -11,7 +11,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [Shaka Packager](https://github.com/shaka-project/shaka-packager)
 
 
-## Media Analysis & Conformance
+## [Media Analysis & Conformance](./docs/analysis-conformance/analysis-confirmance.md)
 - [Akamai stream-validator](https://players.akamai.com/stream-validator)
 - [Apple HLS Tools](https://developer.apple.com/documentation/http-live-streaming/using-apple-s-http-live-streaming-hls-tools)
 - [Aximon DRM Decoders](https://tools.axinom.com/)
@@ -29,16 +29,16 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [Thumbcoil Video Inspector](https://thumb.co.il/)
 - [Unified Streaming Validator](https://validator.unified-streaming.com/)
 
-## Media Playback
+## [Media Playback](./docs/playback/playback.md)
 - [Akamai Players](https://players.akamai.com/players)
 - [Chrome Media internals](chrome://media-internals)
 - [dash.js](https://github.com/Dash-Industry-Forum/dash.js)
 - [Eyevinn stream coruptor](https://github.com/Eyevinn/streaming-onboarding/blob/master/Stream-Corruptor.md)
 - [Man in the middle proxy](https://github.com/mitmproxy/mitmproxy)
 - [Shaka-player](https://github.com/shaka-project/shaka-player)
-- [My dev players (dummpy repo for now)](https://jamiefletcher.dev/http.video/players)
+- [My dev players (dummpy repo for now)](./players/players.md)
 
-## Media Standards
+## [Media Standards](./docs/standards/standards.md)
 - [3GPP](https://www.3gpp.org/)
 - [Alliance for Open media](https://aomedia.org/)
 - [ATSC](https://www.atsc.org/)

@@ -1,0 +1,17 @@
+# Media Standards
+- [3GPP](https://www.3gpp.org/)
+- [Alliance for Open media](https://aomedia.org/)
+- [ATSC](https://www.atsc.org/)
+- [CP2PA] (https://c2pa.org/)
+- [CTA-Wave](https://github.com/cta-wave)
+- [DASH-IF](https://dashif.org/)
+- [DVB](https://dvb.org/)
+- [HbbTV](https://www.hbbtv.org/)    
+- [ISO](https://www.iso.org/home.html)/IEC
+- [ITU](https://www.itu.int/en/Pages/default.aspx)
+- [MP4 Registration Authority](https://mp4ra.org/)
+- [MPEG](https://www.mpeg.org/about-mpeg/)/JPEG
+- [SCTE](https://www.scte.org/)
+- [SMPTE](https://www.smpte.org/)
+- [SVTA](https://www.svta.org/)
+- [W3C](https://www.w3.org/)

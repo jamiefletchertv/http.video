@@ -36,6 +36,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [Eyevinn stream coruptor](https://github.com/Eyevinn/streaming-onboarding/blob/master/Stream-Corruptor.md)
 - [Man in the middle proxy](https://github.com/mitmproxy/mitmproxy)
 - [Shaka-player](https://github.com/shaka-project/shaka-player)
+- [My dev players (dummpy repo for now)](https://jamiefletcher.dev/players)
 
 ## Media Standards
 - [3GPP](https://www.3gpp.org/)

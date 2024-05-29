@@ -7,7 +7,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg)
 - [fmp4-ingest](https://github.com/unifiedstreaming/fmp4-ingest)
 - [GPAC](https://wiki.gpac.io/)
-- [PyCpix] (https://github.com/unifiedstreaming/pycpix)
+- [PyCpix](https://github.com/unifiedstreaming/pycpix)
 - [Shaka Packager](https://github.com/shaka-project/shaka-packager)
 
 

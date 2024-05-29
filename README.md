@@ -42,7 +42,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [3GPP](https://www.3gpp.org/)
 - [Alliance for Open media](https://aomedia.org/)
 - [ATSC](https://www.atsc.org/)
-- [CP2PA] (https://c2pa.org/)
+- [CP2PA](https://c2pa.org/)
 - [CTA-Wave](https://github.com/cta-wave)
 - [DASH-IF](https://dashif.org/)
 - [DVB](https://dvb.org/)

@@ -12,7 +12,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 
 
 ## Media Analysis & Conformance
-- [Akamai stream-validator](https://players.akamai.com/stream-validator
+- [Akamai stream-validator](https://players.akamai.com/stream-validator)
 - [Apple HLS Tools](https://developer.apple.com/documentation/http-live-streaming/using-apple-s-http-live-streaming-hls-tools)
 - [Aximon DRM Decoders](https://tools.axinom.com/)
 - [DASH-IF Conformance](https://conformance.dashif.org/)

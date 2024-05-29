@@ -5,7 +5,7 @@ Taking inspiration from awesome.video I wanted to share resources I use on a
 daily basis. 
 
 ## Media Preparation (Encode/Package/Encryption) 
-- ffmpeg/ffprobe [#encode](#encode)
+- ffmpeg/ffprobe [#encode]()
 - [Bento4](https://github.com/axiomatic-systems/Bento4) (mp4dump) [#package](#package)
 - [fmp4ingest](https://github.com/unifiedstreaming/fmp4-ingest) [#package](#package)
 - [EventMessageTrack](https://github.com/unifiedstreaming/event-message-track)

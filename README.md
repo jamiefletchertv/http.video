@@ -11,7 +11,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [Shaka Packager](https://github.com/shaka-project/shaka-packager)
 
 
-## [Media Analysis & Conformance](./docs/analysis-conformance/analysis-confirmance.md)
+## [Media Analysis & Conformance](./docs/analysis-conformance/analysis-conformance.md)
 - [Akamai stream-validator](https://players.akamai.com/stream-validator)
 - [Apple HLS Tools](https://developer.apple.com/documentation/http-live-streaming/using-apple-s-http-live-streaming-hls-tools)
 - [Aximon DRM Decoders](https://tools.axinom.com/)

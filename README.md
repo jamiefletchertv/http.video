@@ -1,4 +1,4 @@
-# http.video 
+# http.video
 Repository contains tools, tips and tricks i've collected for media streaming. Taking inspiration from https://awesome.video I wanted to share resources I use regularly.
 
 ## [Media Preparation - *Encoding, Packaging & Encryption*](./docs/media-preparation/media-preparation.md) 

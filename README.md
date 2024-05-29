@@ -22,7 +22,7 @@ Repository contains tools, tips and tricks i've collected for media streaming. T
 - [fmp4ingest](https://github.com/unifiedstreaming/fmp4-ingest)
 - [Google DAI SDK for HTML5 Video Suite Inspector](https://googleads.github.io/googleads-ima-html5-dai/vsi/)
 - [GPAC/MP4BOX](https://github.com/gpac/gpac/wiki/MP4Box)
-- [M2AMedia SCTE35 Dump (for MPEGTS)] (https://github.com/m2amedia/scte35dump)
+- [M2AMedia SCTE35 Dump for MPEGTS](https://github.com/m2amedia/scte35dump)
 - [Middleman SCTE35/104 Parser](https://tools.middleman.tv/scte35-parser)
 - [ThreeFive (Scte35)](https://github.com/futzu/SCTE-35_threefive)
 - [Thumbcoil Video Inspector](https://thumb.co.il/)

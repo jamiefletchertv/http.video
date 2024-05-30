@@ -11,13 +11,13 @@ access the tooling.
 **This repository will not host any scripts or tools.**
 
 ## [Media Preparation - *Encoding, Packaging & Encryption*](./docs/media-preparation/media-preparation.md) 
-- [Bento4](https://github.com/axiomatic-systems/Bento4)
-- [EventMessageTrack](https://github.com/unifiedstreaming/event-message-track)
-- [FFmpeg](https://github.com/FFmpeg/FFmpeg)
-- [fmp4-ingest](https://github.com/unifiedstreaming/fmp4-ingest)
-- [GPAC](https://wiki.gpac.io/)
-- [PyCpix](https://github.com/unifiedstreaming/pycpix)
-- [Shaka Packager](https://github.com/shaka-project/shaka-packager)
+- [Bento4][Bento4]
+- [EventMessageTrack][EventMessageTrack]
+- [FFmpeg][FFmpeg]
+- [fmp4-ingest][fmp4-ingest]
+- [GPAC][GPAC]
+- [PyCpix][PyCpix]
+- [Shaka Packager][Shaka Packager]
 
 
 ## [Media Analysis & Conformance](./docs/analysis-conformance/analysis-conformance.md)
@@ -74,3 +74,14 @@ access the tooling.
 - ISO/IEC 14496-15 - Defines the carriage of AVC/HEVC in ISOBMFF 
 - ISO/IEC 14496-30 - Defines formatting for text tracks webvtt or ttml
 - ISO/IEC 23001-7 - Defines encryption of media supported for receiving devices
+
+
+
+<!-- Reference Links -->
+[EventMessageTrack]:https://github.com/unifiedstreaming/event-message-track
+[Bento4]:https://github.com/axiomatic-systems/Bento4
+[FFmpeg]:https://github.com/FFmpeg/FFmpeg
+[fmp4-ingest]:https://github.com/unifiedstreaming/fmp4-ingest
+[GPAC]:https://wiki.gpac.io/
+[PyCpix]:https://github.com/unifiedstreaming/pycpix
+[Shaka Packager]:https://github.com/shaka-project/shaka-packager

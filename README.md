@@ -1,11 +1,10 @@
 # http.video
-Repository containing **links** to tools, tips and tricks related to media
-streaming. Taking inspiration from
-[https://awesome.video] I wanted to share resources I use regularly. 
+## Getting Started
+Repository containing **links** to tools, tips and tricks related to media streaming. 
 
-Each sub-catagory will contain further documentation for *some* of the options and
-arguments useful with each tool and a link to the repository to download or
-access the tooling. 
+Taking inspiration from [https://awesome.video] I wanted to share resources I use regularly. 
+
+Each sub-catagory will contain further documentation for *some* of the options and arguments useful with each tool and a link to the repository to download or access the tooling. 
 
 > [!TIP]
 > For a summary of the tool and how to use it, please follow the heading link, otherwise follow the links each list to access the source repositories. 
@@ -24,10 +23,10 @@ access the tooling.
 
 
 ## [Media Analysis & Conformance]
-- [Bento4]
 - [Akamai stream-validator]
 - [Apple HLS Tools]
 - [Aximon DRM Decoders]
+- [Bento4]
 - [DASH-IF Conformance]
 - [DASH-IF Content Protection List]
 - [Dolby Stream Validator]
@@ -85,11 +84,11 @@ access the tooling.
 Reference Links - NOTE this block must be copied to the foot of each page for useage globally 
 ---------->
 <!-- Local -->
-[Media Preparation - *Encoding, Packaging & Encryption*]:./docs/media-preparation/media-preparation.md
-[Media Analysis & Conformance]:./docs/analysis-conformance/analysis-conformance.md
-[Media Playback]:./docs/media-playback/media-playback.md
-[Media Standards]:./docs/standards/standards.md
-[My dev players (dummpy repo for now)]:./players/players.md
+[Media Preparation - *Encoding, Packaging & Encryption*]:./docs/media-preparation/media-preparation
+[Media Analysis & Conformance]:./docs/analysis-conformance/analysis-conformance
+[Media Playback]:./docs/media-playback/media-playback
+[Media Standards]:./docs/standards/standards
+[My dev players (dummpy repo for now)]:./players/players
 
 <!-- External -->
 <!-- Media Preparation -->
@@ -154,4 +153,23 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [ISO/IEC 14496-30]:https://www.iso.org/standard/75394.html
 [ISO/IEC 23001-7]:https://iso.org/standard/84637.html
 
+<!-- Media Standards - Groups -->
+[3GPP]:https://www.3gpp.org/
+[Alliance for Open media]:https://aomedia.org/
+[ATSC]:https://www.atsc.org/
+[CP2PA]:https://c2pa.org/
+[CTA-Wave]:https://github.com/cta-wave
+[DASH-IF]:https://dashif.org/
+[DVB]:https://dvb.org/
+[HbbTV]:https://www.hbbtv.org/
+[ISO]:https://www.iso.org/home.html
+[ITU]:https://www.itu.int/en/Pages/default.aspx
+[MP4 Registration Authority]:https://mp4ra.org/
+[MPEG]:https://www.mpeg.org/about-mpeg/
+[SCTE]:https://www.scte.org/
+[SMPTE]:https://www.smpte.org/
+[SVTA]:https://www.svta.org/
+[W3C]:https://www.w3.org/
+
+<!-- 3rd Party Resource -->
 [https://awesome.video]:https://awesome.video

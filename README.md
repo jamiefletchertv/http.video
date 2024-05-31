@@ -78,6 +78,9 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [ISO/IEC 14496-30] - Defines formatting for text tracks webvtt or ttml
 - [ISO/IEC 23001-7] - Defines encryption of media supported for receiving devices
 
+## Education
+- [https://awesome.video]
+- [http-streaming-samples]
 
 
 <!----------- 
@@ -171,5 +174,6 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [SVTA]:https://www.svta.org/
 [W3C]:https://www.w3.org/
 
-<!-- 3rd Party Resource -->
+<!-- Education -->
 [https://awesome.video]:https://awesome.video
+[http-streaming-samples]:https://github.com/Eyevinn/http-streaming-samples

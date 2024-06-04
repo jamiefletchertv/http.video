@@ -107,10 +107,10 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [Yospace Blog]
 
 ## Media Education
+- [How Video Works]
 - [https://awesome.video]
-- [http-streaming-samples]
-- [Streaming Learning Center]
 - [Leandro Moreira's Introduction to Digital Video]
+- [Streaming Learning Center]
 - [The Ultimate Video Streaming Glossary: Explained By The Experts]
 
 ## [Media Standards]
@@ -249,8 +249,8 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [W3C]:https://www.w3.org/
 
 <!-- Education -->
+[How Video Works]:https://howvideo.works/
 [https://awesome.video]:https://awesome.video
-[http-streaming-samples]:https://github.com/Eyevinn/http-streaming-samples
 [Streaming Learning Center]:https://streaminglearningcenter.com/
 [Leandro Moreira's Introduction to Digital Video]:https://github.com/leandromoreira/digital_video_introduction
 [The Ultimate Video Streaming Glossary: Explained By The Experts]:https://tinuiti.com/blog/ott-ads/video-streaming-glossary/
@@ -271,7 +271,7 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [Broadcast Now]:https://www.broadcastnow.co.uk/tech
 [Euro - Streaming Media]:http://europe.streamingmedia.com/
 [Eyevinn Technology – Medium]:https://medium.com/@eyevinntechnology
-[FAST Services Are Growing in the Video Streaming World | Observer]:https://observer.com/2024/04/paramount-streaming-ceo-tom-ryan-speaks-growth-of-fast-services-in-streaming/
+[FAST Services Are Growing in the Video Streaming World - Observer]:https://observer.com/2024/04/paramount-streaming-ceo-tom-ryan-speaks-growth-of-fast-services-in-streaming/
 [Future of TV Archives - Digiday]:https://digiday.com/future-of-tv/
 [Guide to vertical integration of major US TV/movie media]:https://imgur.com/gallery/dhrhkaZ
 [Haivision Blog]:https://www.haivision.com/products/kb-series/
@@ -284,13 +284,13 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [Streaming Media]:https://www.streamingmedia.com/
 [Streamroot Blog]:https://blog.streamroot.io/
 [Televisual]:http://www.televisual.com/news.html
-[The Generative AI Tools Landscape | DataCamp]:https://www.datacamp.com/cheat-sheet/the-generative-ai-tools-landscape
+[The Generative AI Tools Landscape - DataCamp]:https://www.datacamp.com/cheat-sheet/the-generative-ai-tools-landscape
 [The Global Media Landscape]:https://www.gwi.com/reports/global-media-landscape
 [TheDRMBlog]:https://go.buydrm.com/thedrmblog
 [TheoPlayer Blog]:https://www.theoplayer.com/blog
 [TVBEurope]:https://www.tvbeurope.com/
 [TvTechnology]:https://www.tvtechnology.com/
 [Video Delivery Landscape]:https://tinuiti.com/blog/ott-ads/video-streaming-glossary/https://divitel.com/video-delivery-landscape/
-[VRT Digital Products | Medium]:https://medium.com/vrt-digital-studio/
+[VRT Digital Products - Medium]:https://medium.com/vrt-digital-studio/
 [Wowza Blog]:https://www.wowza.com/blog/category/blog
 [Yospace Blog]:http://www.yospace.com/category/blog/

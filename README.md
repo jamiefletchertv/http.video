@@ -50,6 +50,66 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [Shaka-player]
 - [My dev players (dummpy repo for now)]
 
+## Media Test Streams
+- [Apple Reference Streams]
+- [BBC R&D - MPEG DASH Test Media]
+- [Bitmovin Test Stream]
+- [DASH IF Test Assets Database]
+- [DASH Sequences · gpac/gpac Wiki · GitHub]
+- [Eyevinn Streaming Samples]
+- [MPEG DASH Sample Content | Bento4]
+- [Mux - HLS Streams]
+- [Rufael Demo Streams]
+- [Unified Streaming Demos]
+- [Unified Streaming Features Page]
+  
+## Media Blogs, News and Insights
+- [Advanced Television]
+- [Amagi Blog]
+- [Anevia's blog]
+- [AWS Developer Forums]
+- [AWS Elemental Live Knowledge Centre]
+- [AWS MediaLive Knowledge Centre]
+- [AWS MediaTailor Knowledge Centre]
+- [BBC Blogs - Technology & Creativity Blog]
+- [BBC Design + Engineering – Medium]
+- [BBC iPlayer – BBC Design + Engineering – Medium]
+- [Bitmovin Blog]
+- [Blog – Streaming Learning Center]
+- [Broadcast Now]
+- [Euro - Streaming Media]
+- [Eyevinn Technology – Medium]
+- [FAST Services Are Growing in the Video Streaming World | Observer]
+- [Future of TV Archives - Digiday]
+- [Guide to vertical integration of major US TV/movie media]
+- [Haivision Blog]
+- [IABM News]
+- [MPEG	News]
+- [Mux Blog - Video technology and more]
+- [Netflix TechBlog]
+- [SportsPro Media]
+- [Streaming Forum]
+- [Streaming Media]
+- [Streamroot Blog]
+- [Televisual]
+- [The Generative AI Tools Landscape | DataCamp]
+- [The Global Media Landscape]
+- [TheDRMBlog]
+- [TheoPlayer Blog]
+- [TVBEurope]
+- [TvTechnology]
+- [Video Delivery Landscape]
+- [VRT Digital Products | Medium]
+- [Wowza Blog]
+- [Yospace Blog]
+
+## Media Education
+- [https://awesome.video]
+- [http-streaming-samples]
+- [Streaming Learning Center]
+- [Leandro Moreira's Introduction to Digital Video]
+- [The Ultimate Video Streaming Glossary: Explained By The Experts]
+
 ## [Media Standards]
 ### Interoprability 
 - [DASH-IF Interoperability Guidelines v5]
@@ -78,9 +138,7 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [ISO/IEC 14496-30] - Defines formatting for text tracks webvtt or ttml
 - [ISO/IEC 23001-7] - Defines encryption of media supported for receiving devices
 
-## Education
-- [https://awesome.video]
-- [http-streaming-samples]
+
 
 
 <!----------- 
@@ -130,6 +188,19 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [Shaka-player]:https://github.com/shaka-project/shaka-player
 [My dev players (dummpy repo for now)]:./players/players.md
 
+<!-- Media Test Streams -->
+[Apple Reference Streams]:https://developer.apple.com/streaming/examples/
+[BBC R&D - MPEG DASH Test Media]:http://rdmedia.bbc.co.uk/
+[Bitmovin Test Stream]:https://bitmovin.com/demos/stream-test
+[DASH IF Test Assets Database]:https://testassets.dashif.org/#testvector/list
+[DASH Sequences · gpac/gpac Wiki · GitHub]:https://github.com/gpac/gpac/wiki/DASH-Sequences
+[Eyevinn Streaming Samples]:https://github.com/Eyevinn/http-streaming-samples
+[MPEG DASH Sample Content | Bento4]:http://www.bento4.com/developers/dash/dash-sample-content/
+[Mux - HLS Streams]:https://test-streams.mux.dev/
+[Rufael Demo Streams]:https://dvb-2017-dm.s3.eu-central-1.amazonaws.com/overview.html
+[Unified Streaming Demos]:https://demo.unfied-streaming.com 
+[Unified Streaming Features Page]:https://demo.unified-streaming.com/k8s/features/stable/#!/mpd
+
 <!-- Media Standards - Interoprability -->  
 [DASH-IF Interoperability Guidelines v5]:https://dashif.org/guidelines/iop-v5/
 [DASH-IF Live Media Ingest Protocol]:https://dashif-documents.azurewebsites.net/Ingest/master/DASH-IF-Ingest.html
@@ -177,3 +248,46 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 <!-- Education -->
 [https://awesome.video]:https://awesome.video
 [http-streaming-samples]:https://github.com/Eyevinn/http-streaming-samples
+[Streaming Learning Center]:https://streaminglearningcenter.com/
+[Leandro Moreira's Introduction to Digital Video]:https://github.com/leandromoreira/digital_video_introduction
+[The Ultimate Video Streaming Glossary: Explained By The Experts]:https://tinuiti.com/blog/ott-ads/video-streaming-glossary/
+
+<!-- Media Blogs and Insights -->
+[Advanced Television]:https://advanced-television.com/
+[Amagi Blog]:https://www.amagi.com/resources/
+[Anevia's blog]:https://anevia.com/blog/
+[AWS Developer Forums]:https://forums.aws.amazon.com/category.jspa?categoryID=43
+[AWS Elemental Live Knowledge Centre]:https://repost.aws/tags/TAdvB1VHw2SDinN3XY4E6oJQ/aws-elemental-live
+[AWS MediaLive Knowledge Centre]:https://repost.aws/tags/TAQT5TNwtgSqeM9NCSKfOJPQ/aws-elemental-medialive
+[AWS MediaTailor Knowledge Centre]:https://repost.aws/tags/TAtkvXWoCvTpe77g9M3Tuv_Q/aws-elemental-mediatailor
+[BBC Blogs - Technology & Creativity Blog]:https://www.bbc.co.uk/blogs/internet
+[BBC Design + Engineering – Medium]:https://medium.com/bbc-design-engineering
+[BBC iPlayer – BBC Design + Engineering – Medium]:https://medium.com/bbc-design-engineering/iplayer/home
+[Bitmovin Blog]:https://bitmovin.com/blog/
+[Blog – Streaming Learning Center]:https://streaminglearningcenter.com/blog
+[Broadcast Now]:https://www.broadcastnow.co.uk/tech
+[Euro - Streaming Media]:http://europe.streamingmedia.com/
+[Eyevinn Technology – Medium]:https://medium.com/@eyevinntechnology
+[FAST Services Are Growing in the Video Streaming World | Observer]:https://observer.com/2024/04/paramount-streaming-ceo-tom-ryan-speaks-growth-of-fast-services-in-streaming/
+[Future of TV Archives - Digiday]:https://digiday.com/future-of-tv/
+[Guide to vertical integration of major US TV/movie media]:https://imgur.com/gallery/dhrhkaZ
+[Haivision Blog]:https://www.haivision.com/products/kb-series/
+[IABM News]:https://www.theiabm.org/newslist/?news_type%5B%5D=Technology+News&topline_tag=
+[MPEG	News]:https://mpeg.chiariglione.org/news
+[Mux Blog - Video technology and more]:https://mux.com/blog/
+[Netflix TechBlog]:https://netflixtechblog.com/
+[SportsPro Media]:http://www.[sportspromedia.com/
+[Streaming Forum]:http://www.streaming-forum.com/2019/LatestNewsArchive.aspx
+[Streaming Media]:https://www.streamingmedia.com/
+[Streamroot Blog]:https://blog.streamroot.io/
+[Televisual]:http://www.televisual.com/news.html
+[The Generative AI Tools Landscape | DataCamp]:https://www.datacamp.com/cheat-sheet/the-generative-ai-tools-landscape
+[The Global Media Landscape]:https://www.gwi.com/reports/global-media-landscape
+[TheDRMBlog]:https://go.buydrm.com/thedrmblog
+[TheoPlayer Blog]:https://www.theoplayer.com/blog
+[TVBEurope]:https://www.tvbeurope.com/
+[TvTechnology]:https://www.tvtechnology.com/
+[Video Delivery Landscape]:https://tinuiti.com/blog/ott-ads/video-streaming-glossary/https://divitel.com/video-delivery-landscape/
+[VRT Digital Products | Medium]:https://medium.com/vrt-digital-studio/
+[Wowza Blog]:https://www.wowza.com/blog/category/blog
+[Yospace Blog]:http://www.yospace.com/category/blog/

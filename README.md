@@ -1,4 +1,7 @@
 # http.video
+
+This page is publically hosted at - https://jamiefletcher.dev/http.video
+
 ## Getting Started
 Repository containing **links** to tools, tips and tricks related to media streaming. 
 
@@ -57,7 +60,7 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [DASH IF Test Assets Database]
 - [DASH Sequences · gpac/gpac Wiki · GitHub]
 - [Eyevinn Streaming Samples]
-- [MPEG DASH Sample Content | Bento4]
+- [MPEG DASH Sample Content - Bento4]
 - [Mux - HLS Streams]
 - [Rufael Demo Streams]
 - [Unified Streaming Demos]
@@ -79,7 +82,7 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [Broadcast Now]
 - [Euro - Streaming Media]
 - [Eyevinn Technology – Medium]
-- [FAST Services Are Growing in the Video Streaming World | Observer]
+- [FAST Services Are Growing in the Video Streaming World - Observer]
 - [Future of TV Archives - Digiday]
 - [Guide to vertical integration of major US TV/movie media]
 - [Haivision Blog]
@@ -92,14 +95,14 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [Streaming Media]
 - [Streamroot Blog]
 - [Televisual]
-- [The Generative AI Tools Landscape | DataCamp]
+- [The Generative AI Tools Landscape - DataCamp]
 - [The Global Media Landscape]
 - [TheDRMBlog]
 - [TheoPlayer Blog]
 - [TVBEurope]
 - [TvTechnology]
 - [Video Delivery Landscape]
-- [VRT Digital Products | Medium]
+- [VRT Digital Products  - Medium]
 - [Wowza Blog]
 - [Yospace Blog]
 

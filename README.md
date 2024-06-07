@@ -294,3 +294,4 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
 [VRT Digital Products - Medium]:https://medium.com/vrt-digital-studio/
 [Wowza Blog]:https://www.wowza.com/blog/category/blog
 [Yospace Blog]:http://www.yospace.com/category/blog/
+[Foo]:https://foo

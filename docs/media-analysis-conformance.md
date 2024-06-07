@@ -1,26 +1,5 @@
 <!-- omit in toc -->
-# Media Analysis & Conformance
-
-<!-- omit in toc -->
-## Table of Contents
-- [Akamai stream-validator](#akamai-stream-validator)
-- [Apple HLS Tools](#apple-hls-tools)
-- [Aximon DRM Decoders](#aximon-drm-decoders)
-- [Bento4](#bento4)
-- [DASH-IF Conformance](#dash-if-conformance)
-- [DASH-IF Content Protection List](#dash-if-content-protection-list)
-- [Dolby Stream Validator](#dolby-stream-validator)
-- [Epic Labs Video Comparator](#epic-labs-video-comparator)
-- [EventMessageTrack](#eventmessagetrack)
-- [fmp4ingest](#fmp4ingest)
-- [Google DAI SDK for HTML5 Video Suite Inspector](#google-dai-sdk-for-html5-video-suite-inspector)
-- [GPAC/MP4BOX](#gpacmp4box)
-- [M2AMedia SCTE35 Dump for MPEGTS](#m2amedia-scte35-dump-for-mpegts)
-- [Middleman SCTE35/104 Parser](#middleman-scte35104-parser)
-- [ThreeFive (Scte35)](#threefive-scte35)
-- [Thumbcoil Video Inspector](#thumbcoil-video-inspector)
-- [Unified Streaming Validator](#unified-streaming-validator)
-
+# Media Analysis and Conformance
 
 ## [Akamai stream-validator]
 ## [Apple HLS Tools]

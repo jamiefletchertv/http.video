@@ -1,17 +1,6 @@
 <!-- omit in toc -->
 # Media Playback
 
-<!-- omit in toc -->
-## Table of Contents
-- [Akamai Players](#akamai-players)
-- [Chrome Media internals](#chrome-media-internals)
-- [dash.js](#dashjs)
-- [Eyevinn stream coruptor](#eyevinn-stream-coruptor)
-- [Man in the middle proxy](#man-in-the-middle-proxy)
-- [Shaka-player](#shaka-player)
-- [My dev players (dummpy repo for now)](#my-dev-players-dummpy-repo-for-now)
-
-
 ## [Akamai Players]
 ## [Chrome Media internals]
 ## [dash.js]

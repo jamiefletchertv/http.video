@@ -1,17 +1,8 @@
-<!-- omit in toc -->
+
 # Media Standards
 
 ![Streaming Architecture Standards Overview - Thanks
 Rufael](../../images/standards-streaming-architecture.png)
-
-<!-- omit in toc -->
-## Table of Contents
-- [Groups](#groups)
-- [Specifications](#specifications)
-  - [Interoprability](#interoprability)
-  - [Presentation formats](#presentation-formats)
-  - [Media Segmentation \& Container Formats](#media-segmentation--container-formats)
-  - [Compression \& Sample Formats](#compression--sample-formats)
 
 ## Groups
 - [3GPP]

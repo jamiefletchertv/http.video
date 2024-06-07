@@ -107,7 +107,7 @@ Each sub-catagory will contain further documentation for *some* of the options a
 - [Yospace Blog]
 
 ## Media Education
-- [How Video Works]
+- [How Video Works]$$
 - [https://awesome.video]
 - [Leandro Moreira's Introduction to Digital Video]
 - [Streaming Learning Center]

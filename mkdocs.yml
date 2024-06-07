@@ -1,0 +1,68 @@
+site_name: http.video
+theme:
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    #- toc.integrate
+    - toc.follow
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: deep-orange
+      accent: purple 
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: deep-orange
+      accent: lime
+
+plugins:
+  - social
+  - search
+  - autorefs
+  - awesome-pages
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/jamiefletchertv
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jamiefletchertv/
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: true
+
+nav:
+    - index.md
+
+copyright: |
+  &copy; 2024 <a href="https://jamiefletcher.dev/http.video"  target="_blank" rel="noopener">Jamie Fletcher</a>

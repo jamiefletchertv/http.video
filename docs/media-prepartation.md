@@ -1,16 +1,4 @@
-<!-- omit in toc -->
-# Media Preparation - *Encoding, Packaging & Encryption* 
-
-<!-- omit in toc -->
-## Table of Contents
-- [Bento4](#bento4)
-- [EventMessageTrack](#eventmessagetrack)
-- [FFmpeg](#ffmpeg)
-- [fmp4ingest](#fmp4ingest)
-- [GPAC](#gpac)
-- [PyCpix](#pycpix)
-- [Shaka Packager](#shaka-packager)
-
+# Media Preparation
 
 ## [Bento4]
 The Bento4 SDK includes several command-line applications/tools that are built using the SDK API. These include:

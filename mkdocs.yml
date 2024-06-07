@@ -60,6 +60,7 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: true
+  - attr_list
 
 nav:
     - index.md

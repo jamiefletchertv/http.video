@@ -394,8 +394,8 @@
                   
 
 
-<h1 id="media-preparation">Media Preparation<a class="headerlink" href="#media-preparation" title="Permanent link">&para;</a></h1>
-<h2 id="bento4"><a href="https://github.com/axiomatic-systems/Bento4">Bento4</a><a class="headerlink" href="#bento4" title="Permanent link">&para;</a></h2>
+<h1 id="media-preparation">Media Preparation</h1>
+<h2 id="bento4"><a href="https://github.com/axiomatic-systems/Bento4">Bento4</a></h2>
 <p>The Bento4 SDK includes several command-line applications/tools that are built using the SDK API. These include:</p>
 <table>
 <thead>
@@ -482,14 +482,16 @@
 <!-- omit in toc -->
 <!--
 ### Example Usage
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Example 1</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># This allows you to extract the XML data from the uuid box of of an ISOBMFF file. </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>mp4extract<span class="w"> </span>--payload-only<span class="w"> </span><span class="s1">&#39;uuid[0]&#39;</span><span class="w"> </span>stream1-1234567.ismv
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Example 2</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Dump the isobmff file format, boxes and values in a json format.</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>mp4dump<span class="w"> </span>--verbosity<span class="w"> </span><span class="m">3</span><span class="w"> </span>--format<span class="w"> </span>json<span class="w"> </span>stream1-1234567.ismv
-</code></pre></div>
+
+<pre><code class="language-bash"># Example 1
+# This allows you to extract the XML data from the uuid box of of an ISOBMFF file. 
+mp4extract --payload-only 'uuid[0]' stream1-1234567.ismv
+
+# Example 2
+# Dump the isobmff file format, boxes and values in a json format.
+mp4dump --verbosity 3 --format json stream1-1234567.ismv
+</code></pre>
+
 -->
 
 <blockquote>
@@ -498,7 +500,7 @@ The <code>mp4split</code> binary is the same name as the Unified-Packager comman
 for static packaging but an entirely different product. </p>
 </blockquote>
 <hr />
-<h2 id="eventmessagetrack"><a href="https://github.com/unifiedstreaming/event-message-track">EventMessageTrack</a><a class="headerlink" href="#eventmessagetrack" title="Permanent link">&para;</a></h2>
+<h2 id="eventmessagetrack"><a href="https://github.com/unifiedstreaming/event-message-track">EventMessageTrack</a></h2>
 <p>This repository was created as a reference implimentation for the ISO/IEC
 23001-18 defines the Event Message Track format specification. </p>
 <p>The tooling in this repository can be used to create, format, extract DASH Event
@@ -536,13 +538,15 @@ Messages oftern used for the carrage of SCTE35 signalling in SSAI workflows. </p
 <!-- omit in toc -->
 <!--
 ### Example Usage
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dash_event_fmp4<span class="w"> </span><span class="k">in</span>.mpd<span class="w"> </span>out_event_track.cmfm<span class="w"> </span>track_id<span class="w"> </span>target_segment_duration<span class="w"> </span><span class="o">(</span><span class="nv">0</span><span class="o">=</span>entire<span class="w"> </span>track<span class="o">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>fmp4_dash_event<span class="w"> </span>in_event_track.cmfm<span class="w"> </span>out.mpd<span class="w"> </span>warning<span class="w"> </span>does<span class="w"> </span>only<span class="w"> </span>work<span class="w"> </span><span class="k">for</span><span class="w"> </span>CMAF<span class="w"> </span>based<span class="w"> </span>event<span class="w"> </span>tracks
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>gen_avail_track<span class="w"> </span>track_duration<span class="o">[</span>ms<span class="o">]</span><span class="w"> </span>segment_duration<span class="o">[</span>ms<span class="o">]</span><span class="w"> </span>slot_duration<span class="o">[</span>ms<span class="o">]</span><span class="w"> </span>avail_interval<span class="o">[</span>ms<span class="o">]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>gen_avail_track<span class="w"> </span><span class="m">600000</span><span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="m">30000</span><span class="w"> </span><span class="m">180000</span>
-</code></pre></div>
+
+<pre><code class="language-bash">dash_event_fmp4 in.mpd out_event_track.cmfm track_id target_segment_duration (0=entire track)
+
+fmp4_dash_event in_event_track.cmfm out.mpd warning does only work for CMAF based event tracks
+
+gen_avail_track track_duration[ms] segment_duration[ms] slot_duration[ms] avail_interval[ms]
+gen_avail_track 600000 2000 30000 180000
+</code></pre>
+
 -->
 
 <blockquote>
@@ -554,7 +558,7 @@ This repository requires its documentation to be clean up since Rufael has
 left Unified Streaming.</p>
 </blockquote>
 <hr />
-<h2 id="ffmpeg"><a href="https://github.com/FFmpeg/FFmpeg">FFmpeg</a><a class="headerlink" href="#ffmpeg" title="Permanent link">&para;</a></h2>
+<h2 id="ffmpeg"><a href="https://github.com/FFmpeg/FFmpeg">FFmpeg</a></h2>
 <p>FFmpeg is a collection of libraries and tools to process multimedia content such as audio, video, subtitles and related metadata.</p>
 <table>
 <thead>
@@ -619,16 +623,18 @@ left Unified Streaming.</p>
 <!-- omit in toc -->
 <!-- 
 ### Example Usage
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ffprobe<span class="w"> </span>-v<span class="w"> </span>quiet<span class="w"> </span>-print_format<span class="w"> </span>json<span class="w"> </span>-show_format<span class="w"> </span>-show_streams<span class="w"> </span>input.mp4
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ffprobe<span class="w"> </span>-v<span class="w"> </span>quiet<span class="w"> </span>-show_frames<span class="w"> </span>-show_entries<span class="w"> </span><span class="nv">frame</span><span class="o">=</span>pict_type<span class="w"> </span>input.mp4<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;[I|B|P]&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/output.csv
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Iframe decode times</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ffprobe<span class="w"> </span>-select_streams<span class="w"> </span>v<span class="w">  </span>-show_frames<span class="w"> </span>-show_entries<span class="w"> </span><span class="nv">frame</span><span class="o">=</span>pkt_pts_time,pict_type,key_frame<span class="w"> </span>banjara_dref.mp4<span class="w"> </span>&gt;<span class="w"> </span>output
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ffmpeg<span class="w"> </span>-report<span class="w"> </span>-re<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w"> </span>-i<span class="w"> </span><span class="nv">smptehdbars</span><span class="o">=</span><span class="nv">size</span><span class="o">=</span>1280x720<span class="w"> </span>-f<span class="w"> </span>lavfi<span class="w">  </span>-i<span class="w"> </span>anullsrc<span class="w"> </span>-filter_complex<span class="w"> </span><span class="s2">&quot;drawbox=y=25: x=iw/2-iw/6.2: c=0x00000000@1: w=iw/3.05: h=36: t=fill, drawtext=timecode_rate=25: timecode=&#39;</span><span class="k">$(</span>date<span class="w"> </span>-u<span class="w"> </span>+%H<span class="se">\\</span>:%M<span class="se">\\</span>:%S<span class="k">)</span><span class="s2">\\:</span><span class="k">$(($(</span>gdate<span class="w"> </span>+%3N<span class="k">)</span><span class="o">/</span><span class="m">25</span><span class="k">))</span><span class="s2">&#39;: tc24hmax=1: fontsize=32: x=(w-tw)/2+tw/2: y=30: fontcolor=white&quot;</span><span class="w"> </span>-g<span class="w"> </span><span class="m">48</span><span class="w">  </span>-r<span class="w"> </span><span class="m">25</span><span class="w"> </span>-keyint_min<span class="w"> </span><span class="m">48</span><span class="w"> </span>-c:v<span class="w"> </span>libx264<span class="w">  </span>-c:a<span class="w"> </span>aac<span class="w">  </span>-map<span class="w"> </span><span class="m">0</span>:v<span class="w">  </span>-map<span class="w"> </span><span class="m">1</span>:a<span class="w">  </span>-fflags<span class="w"> </span>+genpts<span class="w">  </span>-movflags<span class="w"> </span>isml+frag_keyframe<span class="w"> </span>-f<span class="w"> </span>ismv<span class="w">  </span><span class="nv">$PUB_POINT_URI</span>
-</code></pre></div>
+
+<pre><code class="language-bash">ffprobe -v quiet -print_format json -show_format -show_streams input.mp4
+ffprobe -v quiet -show_frames -show_entries frame=pict_type input.mp4 | grep -E -o &quot;[I|B|P]&quot; &gt;&gt; /tmp/output.csv
+# Iframe decode times
+ffprobe -select_streams v  -show_frames -show_entries frame=pkt_pts_time,pict_type,key_frame banjara_dref.mp4 &gt; output
+
+ffmpeg -report -re -f lavfi -i smptehdbars=size=1280x720 -f lavfi  -i anullsrc -filter_complex &quot;drawbox=y=25: x=iw/2-iw/6.2: c=0x00000000@1: w=iw/3.05: h=36: t=fill, drawtext=timecode_rate=25: timecode='$(date -u +%H\\:%M\\:%S)\\:$(($(gdate +%3N)/25))': tc24hmax=1: fontsize=32: x=(w-tw)/2+tw/2: y=30: fontcolor=white&quot; -g 48  -r 25 -keyint_min 48 -c:v libx264  -c:a aac  -map 0:v  -map 1:a  -fflags +genpts  -movflags isml+frag_keyframe -f ismv  $PUB_POINT_URI
+</code></pre>
+
 -->
 <hr />
-<h2 id="fmp4ingest"><a href="https://github.com/unifiedstreaming/fmp4-ingest">fmp4ingest</a><a class="headerlink" href="#fmp4ingest" title="Permanent link">&para;</a></h2>
+<h2 id="fmp4ingest"><a href="https://github.com/unifiedstreaming/fmp4-ingest">fmp4ingest</a></h2>
 <p>This repository was created as a reference implimentation for the <a href="https://dashif-documents.azurewebsites.net/Ingest/master/DASH-IF-Ingest.html">DASH-IF Live
 Media Ingest
 Protocol</a>
@@ -663,10 +669,12 @@ to be delivered to a processing entiry.</p>
 <!-- omit in toc -->
 <!--
 ### Example Usage
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>fmp4ingest<span class="w"> </span>-r<span class="w"> </span>-u<span class="w"> </span>http://localhost/pubpoint/channel1.isml<span class="w"> </span><span class="m">1</span>.cmfv<span class="w"> </span><span class="m">2</span>.cmfv<span class="w"> </span><span class="m">3</span>.cmft
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>fmp4ingest<span class="w"> </span>--initialization<span class="w"> </span>-init.m4s<span class="w"> </span>--media<span class="w"> </span>-0-I-<span class="nv">$Number</span>$.m4s<span class="w"> </span>-r<span class="w"> </span>-u<span class="w"> </span>http://localhost/pubpoint/channel1.isml<span class="w"> </span><span class="m">1</span>.cmfv<span class="w"> </span><span class="m">2</span>.cmfv<span class="w"> </span><span class="m">3</span>.cmft
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>push_markers<span class="w"> </span>--announce<span class="w"> </span><span class="m">1000</span><span class="w"> </span>--seg_dur<span class="w"> </span><span class="m">1920</span><span class="w"> </span>--vtt<span class="w"> </span>--avail<span class="w"> </span><span class="m">19200</span><span class="w"> </span><span class="m">9600</span><span class="w"> </span>-u<span class="w"> </span>http://localhost/test/test.isml
-</code></pre></div>
+
+<pre><code class="language-bash">fmp4ingest -r -u http://localhost/pubpoint/channel1.isml 1.cmfv 2.cmfv 3.cmft
+fmp4ingest --initialization -init.m4s --media -0-I-$Number$.m4s -r -u http://localhost/pubpoint/channel1.isml 1.cmfv 2.cmfv 3.cmft
+push_markers --announce 1000 --seg_dur 1920 --vtt --avail 19200 9600 -u http://localhost/test/test.isml
+</code></pre>
+
 -->
 
 <blockquote>
@@ -678,7 +686,7 @@ This repository requires its documentation to be clean up since Rufael has
 left Unified Streaming.</p>
 </blockquote>
 <hr />
-<h2 id="gpac"><a href="https://wiki.gpac.io/">GPAC</a><a class="headerlink" href="#gpac" title="Permanent link">&para;</a></h2>
+<h2 id="gpac"><a href="https://wiki.gpac.io/">GPAC</a></h2>
 <p>The multimedia packager available in GPAC is called <code>MP4Box</code>. It is mostly designed for processing ISOBMF files (e.g. MP4, 3GP), but can also be used to import/export media from container files like AVI, MPG, MKV, MPEG-2 TS. </p>
 <table>
 <thead>
@@ -697,13 +705,15 @@ left Unified Streaming.</p>
 <!-- omit in toc -->
 <!--
 ### Example Usage
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>MP4Box<span class="w"> </span>-std<span class="w"> </span>-diso<span class="w"> </span>input.mp4<span class="w"> </span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mp4box<span class="w"> </span>-dsap<span class="w"> </span><span class="m">1</span><span class="w"> </span>input.mp4
-</code></pre></div>
+
+<pre><code class="language-bash">MP4Box -std -diso input.mp4 
+mp4box -dsap 1 input.mp4
+</code></pre>
+
 -->
 
-<h2 id="pycpix"><a href="https://github.com/unifiedstreaming/pycpix">PyCpix</a><a class="headerlink" href="#pycpix" title="Permanent link">&para;</a></h2>
-<h2 id="shaka-packager"><a href="https://github.com/shaka-project/shaka-packager">Shaka Packager</a><a class="headerlink" href="#shaka-packager" title="Permanent link">&para;</a></h2>
+<h2 id="pycpix"><a href="https://github.com/unifiedstreaming/pycpix">PyCpix</a></h2>
+<h2 id="shaka-packager"><a href="https://github.com/shaka-project/shaka-packager">Shaka Packager</a></h2>
 <!----------- 
 Reference Links - NOTE this block must be copied to the foot of each page for useage globally 
 ---------->
@@ -805,7 +815,7 @@ Reference Links - NOTE this block must be copied to the foot of each page for us
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.follow", {"permalink": true, "toc": null}, "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "material.extensions.emoji.twemoji", "material.extensions.emoji.to_svg", "attr_list", {"pymdownx.highlight": {"anchor_linenums": true}}, "pymdownx.inlinehilite", "pymdownx.snippets", "admonition", {"pymdownx.arithmatex": {"generic": true}}, "footnotes", "pymdownx.details", "pymdownx.superfences", "pymdownx.mark"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>

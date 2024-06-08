@@ -1,6 +1,5 @@
 site_name: http.video
 theme:
-theme:
   name: material
   features:
     - navigation.tabs
@@ -31,8 +30,7 @@ theme:
 plugins:
   - social
   - search
-  ## Disable due to breaking GH Actions build
-  #- autorefs
+  - autorefs
   - awesome-pages
 
 extra:
@@ -56,15 +54,20 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.mark
   - attr_list
-  ## Disable due to breaking GH Actions build
-  #- pymdownx.emoji:
-  #    emoji_index: !!python/name:materialx.emoji.twemoji
-  #    emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: true
 
 nav:
-    - index.md
+    - index.md    
+    ## Disable Working pages from navigation bar
+    #- media-analysis-conformance.md
+    #- media-playback.md
+    #- media-prepartation.md
+    #- media-standards.md
+    #- players.md
 
 copyright: |
   &copy; 2024 <a href="https://jamiefletcher.dev/http.video"  target="_blank" rel="noopener">Jamie Fletcher</a>

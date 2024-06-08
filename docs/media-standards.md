@@ -2,7 +2,7 @@
 # Media Standards
 
 ![Streaming Architecture Standards Overview - Thanks
-Rufael](../../images/standards-streaming-architecture.png)
+Rufael](images/standards-streaming-architecture.png)
 
 ## Groups
 - [3GPP]

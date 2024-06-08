@@ -7,17 +7,10 @@
 ## [Eyevinn stream coruptor]
 ## [Man in the middle proxy]
 ## [Shaka-player]
-## [My dev players (dummpy repo for now)]
 
 <!----------- 
 Reference Links - NOTE this block must be copied to the foot of each page for useage globally 
 ---------->
-<!-- Local -->
-[Media Preparation - *Encoding, Packaging & Encryption*]:./docs/media-preparation/media-preparation
-[Media Analysis & Conformance]:./docs/analysis-conformance/analysis-conformance
-[Media Playback]:./docs/media-playback/media-playback
-[Media Standards]:./docs/standards/standards
-[My dev players (dummpy repo for now)]:./players/players
 
 <!-- External -->
 <!-- Media Preparation -->

@@ -31,7 +31,7 @@ theme:
 plugins:
   - social
   - search
-  - autorefs
+  #- autorefs
   - awesome-pages
 
 extra:

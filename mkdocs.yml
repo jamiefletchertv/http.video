@@ -55,6 +55,10 @@ extra:
       link: https://github.com/jamiefletchertv
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/jamiefletchertv/
+  extra:
+  analytics:
+    provider: google
+    property: G-SMX39Z84J3
 
 nav:
     - index.md    

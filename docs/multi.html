@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Player Example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.2/shaka-player.compiled.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mux.js@5.7.0/dist/mux.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .tv-frame {
+      position: relative;
+      width: 700px;
+      height: 400px;
+      background: url('https://i.imgur.com/2sE30P8.png') no-repeat center center;
+      background-size: contain;
+      padding: 20px;
+    }
+
+    .tv-screen {
+      width: 100%;
+      height: 100%;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    select, button {
+      font-size: 16px;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    .video-js {
+      width: 640px;
+      height: 360px;
+    }
+
+    .feedback {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 80%;
+    }
+
+    th, td {
+      border: 1px solid white;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="feedback" id="feedback">Active Player: None</div>
+    <div class="tv-frame">
+      <div class="tv-screen">
+        <video id="video" class="video-js vjs-default-skin" controls></video>
+      </div>
+    </div>
+    <div class="controls">
+      <label for="playerSelector">Select Player:</label>
+      <select id="playerSelector">
+        <option value="shaka">Shaka Player</option>
+        <option value="hlsjs">HLS.js</option>
+        <option value="videojs">Video.js</option>
+      </select>
+
+      <label for="manifestSelector">Select Manifest:</label>
+      <select id="manifestSelector">
+        <option value="https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.mpd">Live (DASH)</option>
+        <option value="https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8">Live (HLS)</option>
+        <option value="https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.mpd">VOD (DASH)</option>
+        <option value="https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.m3u8">VOD (HLS)</option>
+      </select>
+      <button id="playButton">Play</button>
+    </div>
+    <table id="trackTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>Track</th>
+          <th>Type</th>
+          <th>Codec</th>
+          <th>Bitrate (kbps)</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('video');
+      const playerSelector = document.getElementById('playerSelector');
+      const manifestSelector = document.getElementById('manifestSelector');
+      const playButton = document.getElementById('playButton');
+      const feedback = document.getElementById('feedback');
+      const trackTable = document.getElementById('trackTable');
+      const trackTableBody = trackTable.querySelector('tbody');
+      let shakaPlayer = new shaka.Player(video);
+      let hlsPlayer = null;
+      let videoJsPlayer = null;
+
+      // Error handling for Shaka Player
+      shakaPlayer.addEventListener('error', onErrorEvent);
+
+      // Play button click event
+      playButton.addEventListener('click', () => {
+        const playerType = playerSelector.value;
+        const manifestUri = manifestSelector.value;
+        loadPlayer(playerType, manifestUri);
+        feedback.textContent = `Active Player: ${playerSelector.options[playerSelector.selectedIndex].text}`;
+      });
+
+      // Load the appropriate player
+      async function loadPlayer(playerType, manifestUri) {
+        // Stop the video and clear any existing player instances
+        if (shakaPlayer) {
+          await shakaPlayer.unload();
+        }
+        if (hlsPlayer) {
+          hlsPlayer.destroy();
+          hlsPlayer = null;
+        }
+        if (videoJsPlayer) {
+          videoJsPlayer.dispose();
+          videoJsPlayer = null;
+        }
+
+        trackTable.style.display = 'none';
+        trackTableBody.innerHTML = '';
+
+        // Load the selected player with the manifest URI
+        if (playerType === 'shaka') {
+          try {
+            await shakaPlayer.load(manifestUri);
+            video.play();
+            updateTrackTable(shakaPlayer.getVariantTracks());
+          } catch (e) {
+            onError(e);
+          }
+        } else if (playerType === 'hlsjs') {
+          if (Hls.isSupported()) {
+            hlsPlayer = new Hls();
+            hlsPlayer.loadSource(manifestUri);
+            hlsPlayer.attachMedia(video);
+            hlsPlayer.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+              video.play();
+              updateHLSTrackTable(data.levels);
+            });
+          } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = manifestUri;
+            video.addEventListener('canplay', function () {
+              video.play();
+            });
+          } else {
+            console.error('HLS.js is not supported in this browser.');
+          }
+        } else if (playerType === 'videojs') {
+          videoJsPlayer = videojs(video);
+          videoJsPlayer.src({ src: manifestUri, type: manifestUri.endsWith('.m3u8') ? 'application/x-mpegURL' : 'application/dash+xml' });
+          videoJsPlayer.ready(() => {
+            videoJsPlayer.play();
+            if (manifestUri.endsWith('.m3u8')) {
+              videoJsPlayer.on('loadedmetadata', function() {
+                updateVideoJSHLSTrackTable(videoJsPlayer.tech().hls.playlists.media().segments);
+              });
+            }
+          });
+        }
+      }
+
+      function updateTrackTable(tracks) {
+        trackTableBody.innerHTML = '';
+        tracks.forEach((track, index) => {
+          const row = trackTableBody.insertRow();
+          row.insertCell(0).textContent = index + 1;
+          row.insertCell(1).textContent = track.type;
+          row.insertCell(2).textContent = track.codecs;
+          row.insertCell(3).textContent = Math.round(track.bandwidth / 1000);
+        });
+        trackTable.style.display = '';
+      }
+
+      function updateHLSTrackTable(levels) {
+        trackTableBody.innerHTML = '';
+        levels.forEach((level, index) => {
+          const row = trackTableBody.insertRow();
+          row.insertCell(0).textContent = index + 1;
+          row.insertCell(1).textContent = 'video';
+          row.insertCell(2).textContent = level.codec;
+          row.insertCell(3).textContent = Math.round(level.bitrate / 1000);
+        });
+        trackTable.style.display = '';
+      }
+
+      function updateVideoJSHLSTrackTable(segments) {
+        trackTableBody.innerHTML = '';
+        segments.forEach((segment, index) => {
+          const row = trackTableBody.insertRow();
+          row.insertCell(0).textContent = index + 1;
+          row.insertCell(1).textContent = 'video';
+          row.insertCell(2).textContent = segment.codecs;
+          row.insertCell(3).textContent = Math.round(segment.bitrate / 1000);
+        });
+        trackTable.style.display = '';
+      }
+
+      // Error handling function
+      function onErrorEvent(event) {
+        onError(event.detail);
+      }
+
+      function onError(error) {
+        console.error('Error code', error.code, 'object', error);
+      }
+    });
+  </script>
+</body>
+</html>

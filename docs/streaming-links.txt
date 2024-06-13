@@ -91,8 +91,30 @@ https://bitmovin-a.akamaihd.net/content/dataset/multi-codec/hevc/v720p_ts.m3u8>H
 "https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/master/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/live/trunk/scte35.isml/.m3u8",
 "https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/master/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/vod2live/stable/unified-learning.isml/.m3u8?filter=%28type!=%22textstream%22%29",
 "https://live.serverside.ai/hls/47d507f7-e08b-41a6-b9ea-63db94f4ded3/master.m3u8?api-key=2f1ee512-1180-4766-8a06-437463bd590c",
-"https://vc.internal.unified-streaming.com/demo_channel-trunk.isml/.m3u8",
-"https://vc.internal.unified-streaming.com/demo_channel-trunk.isml/.mpd",
 "https://virtual-channel.unified-streaming.com/demo_channel-stable.isml/.m3u8",
 "https://virtual-channel.unified-streaming.com/demo_channel-stable.isml/.mpd",
 "https://virtual-channel.unified-streaming.com/subtitle_stupid.isml/.mpd",
+
+https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.mpd
+https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.m3u8
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.m3u8?filter=(type==%22audio%22%26%26systemBitrate<100000)||(type==%22video%22%26%26systemBitrate<1024000)&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-multi-lang.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/master_cbcs_origin.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-multi-lang.ism/.mpd?filter=(type!=%22video%22)&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.mp4/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.m3u8?vend=00:01:00 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-tiled-thumbnails-timeline.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.m3u8?t=00:06:00-00:07:30&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-av1.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.f4m?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-aes.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.mp4/.f4m?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-en.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-hls-playready.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+/demo.unified-streaming.com/k8s/features/trunk/no-handler-origin/tears-of-steel/tears-of-steel-wvtt-sidecar.mpd
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-wvtt.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-hevc.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.f4m?t=00:06:00-00:07:30&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-tiled-thumbnails-numbered.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-dash-widevine.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-multi-lang.ism/.m3u8?filter=(type!=%22video%22)&t=00:00:00.000-00:00:15.000 OK

@@ -37,6 +37,7 @@
     .tv-screen {
       width: 100%;
       height: 100%;
+      position: relative;
     }
 
     .controls {
@@ -74,6 +75,22 @@
     th {
       background-color: #333;
     }
+
+    .error-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      z-index: 10;
+      visibility: hidden;
+    }
   </style>
 </head>
 <body>
@@ -82,6 +99,7 @@
     <div class="tv-frame">
       <div class="tv-screen">
         <video id="video" class="video-js vjs-default-skin" controls></video>
+        <div class="error-overlay" id="errorOverlay"></div>
       </div>
     </div>
     <div class="controls">
@@ -108,6 +126,7 @@
           <th>Type</th>
           <th>Codec</th>
           <th>Bitrate (kbps)</th>
+          <th>Segment Length (s)</th>
         </tr>
       </thead>
       <tbody>
@@ -122,14 +141,12 @@
       const manifestSelector = document.getElementById('manifestSelector');
       const playButton = document.getElementById('playButton');
       const feedback = document.getElementById('feedback');
+      const errorOverlay = document.getElementById('errorOverlay');
       const trackTable = document.getElementById('trackTable');
       const trackTableBody = trackTable.querySelector('tbody');
-      let shakaPlayer = new shaka.Player(video);
+      let shakaPlayer = null;
       let hlsPlayer = null;
       let videoJsPlayer = null;
-
-      // Error handling for Shaka Player
-      shakaPlayer.addEventListener('error', onErrorEvent);
 
       // Play button click event
       playButton.addEventListener('click', () => {
@@ -137,13 +154,15 @@
         const manifestUri = manifestSelector.value;
         loadPlayer(playerType, manifestUri);
         feedback.textContent = `Active Player: ${playerSelector.options[playerSelector.selectedIndex].text}`;
+        errorOverlay.style.visibility = 'hidden';
       });
 
       // Load the appropriate player
       async function loadPlayer(playerType, manifestUri) {
         // Stop the video and clear any existing player instances
         if (shakaPlayer) {
-          await shakaPlayer.unload();
+          shakaPlayer.destroy();
+          shakaPlayer = null;
         }
         if (hlsPlayer) {
           hlsPlayer.destroy();
@@ -159,10 +178,11 @@
 
         // Load the selected player with the manifest URI
         if (playerType === 'shaka') {
+          shakaPlayer = new shaka.Player(video);
           try {
             await shakaPlayer.load(manifestUri);
             video.play();
-            updateTrackTable(shakaPlayer.getVariantTracks());
+            updateTrackTable(await parseShakaManifest(manifestUri));
           } catch (e) {
             onError(e);
           }
@@ -173,7 +193,7 @@
             hlsPlayer.attachMedia(video);
             hlsPlayer.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
               video.play();
-              updateHLSTrackTable(data.levels);
+              updateHLSTrackTable(data);
             });
           } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             video.src = manifestUri;
@@ -181,7 +201,7 @@
               video.play();
             });
           } else {
-            console.error('HLS.js is not supported in this browser.');
+            showError('HLS.js is not supported in this browser.');
           }
         } else if (playerType === 'videojs') {
           videoJsPlayer = videojs(video);
@@ -189,48 +209,159 @@
           videoJsPlayer.ready(() => {
             videoJsPlayer.play();
             if (manifestUri.endsWith('.m3u8')) {
-              videoJsPlayer.on('loadedmetadata', function() {
-                updateVideoJSHLSTrackTable(videoJsPlayer.tech().hls.playlists.media().segments);
+              videoJsPlayer.on('loadedmetadata', async function() {
+                updateVideoJSHLSTrackTable(await parseVideoJSMasterPlaylist(videoJsPlayer.src()));
               });
             }
           });
         }
       }
 
-      function updateTrackTable(tracks) {
+      // Parse Shaka Player manifest
+      async function parseShakaManifest(manifestUri) {
+        const response = await fetch(manifestUri);
+        const manifestText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(manifestText, "application/xml");
+
+        const tracks = [];
+        const adaptationSets = xmlDoc.getElementsByTagName("AdaptationSet");
+
+        Array.from(adaptationSets).forEach((adaptationSet, index) => {
+          const mimeType = adaptationSet.getAttribute("mimeType");
+          const codecs = adaptationSet.getAttribute("codecs");
+          const contentType = adaptationSet.getAttribute("contentType");
+
+          let type = 'unknown';
+          if (mimeType.includes("video")) type = 'video';
+          else if (mimeType.includes("audio")) type = 'audio';
+          else if (mimeType.includes("text")) type = 'subtitle';
+
+          const representations = adaptationSet.getElementsByTagName("Representation");
+
+          Array.from(representations).forEach((representation, repIndex) => {
+            const bandwidth = representation.getAttribute("bandwidth");
+            const segmentTemplate = representation.getElementsByTagName("SegmentTemplate")[0];
+            const segmentTimeline = segmentTemplate.getElementsByTagName("SegmentTimeline")[0];
+            const segments = segmentTimeline.getElementsByTagName("S");
+
+            let totalDuration = 0;
+            Array.from(segments).forEach(segment => {
+              const duration = segment.getAttribute("d");
+              totalDuration += parseInt(duration, 10);
+            });
+
+            const timescale = segmentTemplate.getAttribute("timescale");
+            const averageSegmentDuration = (totalDuration / segments.length) / timescale;
+
+            tracks.push({
+              trackId: tracks.length + 1,
+              type: type,
+              codec: codecs,
+              bitrate: bandwidth,
+              segmentLength: averageSegmentDuration.toFixed(2)
+            });
+          });
+        });
+
+        return tracks;
+      }
+
+      // Parse HLS.js manifest
+      function updateHLSTrackTable(data) {
         trackTableBody.innerHTML = '';
-        tracks.forEach((track, index) => {
+        const tracks = [];
+
+        // Add video tracks
+        if (data.levels) {
+          data.levels.forEach((level, index) => {
+            tracks.push({
+              trackId: index + 1,
+              type: 'video',
+              codec: level.codec,
+              bitrate: level.bitrate,
+              segmentLength: calculateHLSSegmentLength(level)
+            });
+          });
+        }
+
+        // Add audio tracks if available
+        if (data.audioTracks) {
+          data.audioTracks.forEach((audioTrack, index) => {
+            tracks.push({
+              trackId: data.levels.length + index + 1,
+              type: 'audio',
+              codec: audioTrack.codec || 'aac',
+              bitrate: audioTrack.bitrate || 0,
+              segmentLength: 'N/A' // HLS.js does not provide segment duration for audio tracks directly
+            });
+          });
+        }
+
+        // Display tracks in the table
+        tracks.forEach((track) => {
           const row = trackTableBody.insertRow();
-          row.insertCell(0).textContent = index + 1;
+          row.insertCell(0).textContent = track.trackId;
           row.insertCell(1).textContent = track.type;
-          row.insertCell(2).textContent = track.codecs;
-          row.insertCell(3).textContent = Math.round(track.bandwidth / 1000);
+          row.insertCell(2).textContent = track.codec;
+          row.insertCell(3).textContent = Math.round(track.bitrate / 1000);
+          row.insertCell(4).textContent = track.segmentLength;
         });
+
         trackTable.style.display = '';
       }
 
-      function updateHLSTrackTable(levels) {
-        trackTableBody.innerHTML = '';
-        levels.forEach((level, index) => {
-          const row = trackTableBody.insertRow();
-          row.insertCell(0).textContent = index + 1;
-          row.insertCell(1).textContent = 'video';
-          row.insertCell(2).textContent = level.codec;
-          row.insertCell(3).textContent = Math.round(level.bitrate / 1000);
-        });
-        trackTable.style.display = '';
+      function calculateHLSSegmentLength(level) {
+        if (!level.details || !level.details.totalduration || !level.details.fragments.length) {
+          return 'N/A';
+        }
+
+        const totalDuration = level.details.totalduration;
+        const fragmentCount = level.details.fragments.length;
+        const segmentLength = totalDuration / fragmentCount;
+
+        return segmentLength.toFixed(2);
       }
 
-      function updateVideoJSHLSTrackTable(segments) {
-        trackTableBody.innerHTML = '';
-        segments.forEach((segment, index) => {
-          const row = trackTableBody.insertRow();
-          row.insertCell(0).textContent = index + 1;
-          row.insertCell(1).textContent = 'video';
-          row.insertCell(2).textContent = segment.codecs;
-          row.insertCell(3).textContent = Math.round(segment.bitrate / 1000);
+      // Parse Video.js HLS manifest
+      async function parseVideoJSMasterPlaylist(masterPlaylistUrl) {
+        const response = await fetch(masterPlaylistUrl);
+        const masterPlaylist = await response.text();
+        const parser = new m3u8Parser.Parser();
+        parser.push(masterPlaylist);
+        parser.end();
+
+        const manifest = parser.manifest;
+        const tracks = [];
+
+        manifest.playlists.forEach((playlist, index) => {
+          const track = {
+            trackId: index + 1,
+            type: playlist.attributes.CODECS ? getTrackTypeFromCodecs(playlist.attributes.CODECS) : 'video',
+            codec: playlist.attributes.CODECS || 'Unknown',
+            bitrate: playlist.attributes.BANDWIDTH,
+            segmentLength: playlist.segments.length > 0 ? calculateHLSSegmentLengthForVideoJS(playlist.segments) : 'N/A'
+          };
+          tracks.push(track);
         });
-        trackTable.style.display = '';
+
+        return tracks;
+      }
+
+      function getTrackTypeFromCodecs(codecs) {
+        if (codecs.includes('avc') || codecs.includes('h264')) {
+          return 'video';
+        } else if (codecs.includes('aac') || codecs.includes('mp4a')) {
+          return 'audio';
+        } else {
+          return 'Unknown';
+        }
+      }
+
+      function calculateHLSSegmentLengthForVideoJS(segments) {
+        const totalDuration = segments.reduce((acc, segment) => acc + segment.duration, 0);
+        const averageDuration = totalDuration / segments.length;
+        return averageDuration.toFixed(2);
       }
 
       // Error handling function
@@ -240,6 +371,17 @@
 
       function onError(error) {
         console.error('Error code', error.code, 'object', error);
+        showError(`Error: ${error.message}`);
+      }
+
+      function showError(message) {
+        errorOverlay.textContent = message;
+        errorOverlay.style.visibility = 'visible';
+      }
+
+      // Global error handling
+      window.onerror = function(message) {
+        showError(`Error: ${message}`);
       }
     });
   </script>

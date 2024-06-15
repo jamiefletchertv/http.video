@@ -4,7 +4,7 @@
   <title>Video Player Example</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.2/shaka-player.compiled.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mux.js@5.7.0/dist/mux.min.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
   <div class="container">
@@ -13,6 +13,7 @@
       <div class="tv-screen">
         <video id="video" class="video-js vjs-default-skin" controls muted></video>
         <div id="eventOverlay" class="event-overlay"></div>
+        <div id="liveEdgeOverlay" class="live-edge-overlay"></div>
       </div>
     </div>
     <div class="controls">
@@ -37,6 +38,7 @@
           <th>Height</th>
           <th>Frame Rate</th>
           <th>Audio Sampling Rate</th>
+          <th>Segment Duration (s)</th>
         </tr>
       </thead>
       <tbody>
@@ -55,6 +57,6 @@
       </tbody>
     </table>
   </div>
-  <script type="module" src="js/shaka-player.js"></script>
+  <script src="js/shaka-player.js" type="module"></script>
 </body>
 </html>

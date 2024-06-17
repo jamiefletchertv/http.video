@@ -30,6 +30,7 @@ export function updateTrackTable(tracks) {
 export function updateEventTable(events) {
   const eventTable = document.getElementById('eventTable');
   const eventTableBody = eventTable.querySelector('tbody');
+  events.sort((a, b) => new Date(b.start) - new Date(a.start));
 
   eventTableBody.innerHTML = '';
   events.forEach(event => {

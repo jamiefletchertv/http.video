@@ -102,7 +102,7 @@ thead, tbody tr {
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
-  color: yellow;
+  color: red;
   padding: 5px 10px;
   font-size: 20px;
   border-radius: 5px;
@@ -110,5 +110,5 @@ thead, tbody tr {
 }
 
 .highlighted {
-  background-color: yellow;
+  background-color: red;
 }

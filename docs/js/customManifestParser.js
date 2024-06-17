@@ -200,7 +200,7 @@ export class CustomManifestParser {
         Array.from(representations).forEach((representation) => {
           const bandwidth = representation.getAttribute('bandwidth') || 'n/a';
 
-          console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}`);
+          //console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}`);
 
           tracks.push({
             ...trackData,
@@ -251,7 +251,7 @@ export class CustomManifestParser {
           const durationString = `${String(durationHours).padStart(2, '0')}:${String(durationMinutes).padStart(2, '0')}:${String(durationSeconds).padStart(9, '0')}`;
 
           const messageData = event.textContent;
-          console.log(`DASH Event: ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
+          //console.log(`DASH Event: ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
 
           events.push({
             id: event.getAttribute('id') || 'n/a',

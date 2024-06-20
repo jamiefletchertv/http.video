@@ -9,6 +9,7 @@ body {
   color: white;
   width: 100%;
   overflow: auto;
+  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -40,52 +41,37 @@ body {
   height: 100%;
 }
 
-.controls {
-  margin-top: 20px;
-}
-
-select, button {
-  font-size: 16px;
-  padding: 5px;
-  margin: 5px;
-}
-
 .feedback {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
+.toggles {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 table {
   margin-top: 20px;
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
+  max-width: 1000px;
 }
 
-th, td {
-  border: 1px solid white;
-  padding: 8px;
-  text-align: center;
-  word-wrap: break-word;
+.hidden {
+  display: none;
 }
 
-th {
-  background-color: #333;
-}
-
-tbody {
-  display: block;
-  width: 100%;
-}
-
-thead, tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
+.highlighted {
+  background-color: red !important;
 }
 
 .event-overlay {
   position: absolute;
-  bottom: 10px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
@@ -98,7 +84,7 @@ thead, tbody tr {
 
 .live-edge-overlay {
   position: absolute;
-  top: 10px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
@@ -107,8 +93,4 @@ thead, tbody tr {
   font-size: 20px;
   border-radius: 5px;
   display: none;
-}
-
-.highlighted {
-  background-color: red;
 }

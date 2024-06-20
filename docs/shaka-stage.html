@@ -20,12 +20,17 @@
     <div class="controls">
       <label for="manifestSelector">Select Manifest:</label>
       <select id="manifestSelector" class="form-control">
+        <option value="">-- Select a manifest --</option>
         <option value="https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.mpd">Live (DASH)</option>
         <option value="https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8">Live (HLS)</option>
         <option value="https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.mpd">VOD (DASH)</option>
         <option value="https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.m3u8">VOD (HLS)</option>
       </select>
+      <label for="customManifestUrl" class="mt-2">Or Enter Manifest URL:</label>
+      <input type="text" id="customManifestUrl" class="form-control" placeholder="Enter custom manifest URL">
+      <div id="errorMessage" class="error-message text-danger mt-2"></div>
       <button id="playButton" class="btn btn-primary mt-2">Play</button>
+      <button id="resetButton" class="btn btn-secondary mt-2">Reset</button>
     </div>
     <div class="toggles mt-4">
       <div class="custom-control custom-switch">

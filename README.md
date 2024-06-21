@@ -7,4 +7,11 @@ Repository containing **links** to tools, tips and tricks related to media strea
 
 Taking inspiration from [https://awesome.video] I wanted to share resources I use regularly. 
 
-Each sub-catagory will contain further documentation for *some* of the options and arguments useful with each tool and a link to the repository to download or access the tooling. 
+Each sub-catagory will contain further documentation for *some* of the options
+and arguments useful with each tool and a link to the repository to download or
+access the tooling. 
+
+### Deployment
+This site is build using `mkdocs` and `mkdoc-material` theme. 
+
+`% mkdocs gh-deploy` will build and deploy the site to the `repo/gh-pages` branch

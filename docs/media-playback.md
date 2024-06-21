@@ -7,22 +7,14 @@
 ## [Eyevinn stream coruptor]
 ## [Man in the middle proxy]
 ## [Shaka-player]
-## [My dev players (dummpy repo for now)]
 
 <!----------- 
 Reference Links - NOTE this block must be copied to the foot of each page for useage globally 
 ---------->
-<!-- Local -->
-[Media Preparation - *Encoding, Packaging & Encryption*]:./docs/media-preparation/media-preparation
-[Media Analysis & Conformance]:./docs/analysis-conformance/analysis-conformance
-[Media Playback]:./docs/media-playback/media-playback
-[Media Standards]:./docs/standards/standards
-[My dev players (dummpy repo for now)]:./players/players
 
 <!-- External -->
 <!-- Media Preparation -->
 [EventMessageTrack]:https://github.com/unifiedstreaming/event-message-track
-[Bento4]:https://github.com/axiomatic-systems/Bento4
 [FFmpeg]:https://github.com/FFmpeg/FFmpeg
 [fmp4-ingest]:https://github.com/unifiedstreaming/fmp4-ingest
 [GPAC]:https://wiki.gpac.io/

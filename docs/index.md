@@ -14,58 +14,59 @@ For a summary of the tool and how to use it, please follow the heading link, oth
 This repository will not host any scripts or tools.
 
 
-## [Media Preparation - *Encoding, Packaging & Encryption*][media-preparation]
-- [Bento4]
-- [EventMessageTrack]
-- [FFmpeg]
-- [fmp4-ingest]
-- [GPAC]
-- [PyCpix]
-- [Shaka Packager]
+<!-- ## [Media Preparation - *Encoding, Packaging & Encryption*][media-preparation]-->
+## Media Preparation - *Encoding, Packaging & Encryption*
+- [Bento4]({{bento4}})
+- [EventMessageTrack]({{eventmessagetrack}})
+- [FFmpeg]({{ffmpeg}})
+- [fmp4ingest]({{fmp4ingest}})
+- [GPAC]({{gpac}})
+- [PyCpix]({{pycpix}})
+- [Shaka Packager]({{shaka_packager}})
+
+<!-- ## [Media Analysis & Conformance][media-analysis-and-conformance] -->
+## Media Analysis & Conformance
+<!-- ## Media Analysis & Conformance -->
+- [Akamai Stream Validator]({{akamai_stream_validator}})
+- [Apple HLS Tools]({{apple_hls_tools}})
+- [Aximon DRM Decoders]({{aximon_drm_decoders}})
+- [Bento4]({{bento4}})
+- [DASH-IF Conformance]({{dashif_conformance}})
+- [DASH-IF Content Protection List]({{dashif_content_protection_list}})
+- [Dolby Stream Validator]({{dolby_stream_validator}})
+- [Epic Labs Video Comparator]({{epic_labs_video_comparator}})
+- [EventMessageTrack]({{eventmessagetrack}})
+- [fmp4ingest]({{fmp4ingest}})
+- [Google DAI SDK for HTML5 Video Suite Inspector]({{google_dai_sdk_for_html5_video_suite_inspector}})
+- [GPAC/MP4BOX]({{gpac_mp4box}})
+- [M2AMedia SCTE35 Dump for MPEGTS]({{m2amedia_scte35_dump_for_mpegts}})
+- [Middleman SCTE35/104 Parser]({{middleman_scte35_104_parser}})
+- [ThreeFive (Scte35)]({{threefive_scte35}})
+- [Thumbcoil Video Inspector]({{thumbcoil_video_inspector}})
+- [Unified Streaming Validator]({{unified_streaming_validator}})
 
 
-
-## [Media Analysis & Conformance][media-analysis-and-conformance]
-- [Akamai stream-validator]
-- [Apple HLS Tools]
-- [Aximon DRM Decoders]
-- [Bento4]
-- [DASH-IF Conformance]
-- [DASH-IF Content Protection List]
-- [Dolby Stream Validator]
-- [Epic Labs Video Comparator]
-- [EventMessageTrack]
-- [fmp4ingest]
-- [Google DAI SDK for HTML5 Video Suite Inspector]
-- [GPAC/MP4BOX]
-- [M2AMedia SCTE35 Dump for MPEGTS]
-- [Middleman SCTE35/104 Parser]
-- [ThreeFive (Scte35)]
-- [Thumbcoil Video Inspector]
-- [Unified Streaming Validator]
-
-
-## [Media Playback][media-playback]
-- [Akamai Players]
-- [Chrome Media internals]
-- [dash.js]
-- [Eyevinn stream coruptor]
-- [Man in the middle proxy]
-- [Shaka-player]
-- [My dev players (dummpy repo for now)]
+<!-- ## [Media Playback][media-playback]-->
+## Media Playback
+- [Akamai Players]({{akamai_players}})
+- [Chrome Media internals]({{chrome_media_internals}})
+- [dash.js]({{dash_js}})
+- [Eyevinn stream coruptor]({{eyevinn_stream_coruptor}})
+- [Man in the middle proxy]({{man_in_the_middle_proxy}})
+- [Shaka Player]({{shaka_player}})
 
 ## Media Test Streams
-- [Apple Reference Streams]
-- [BBC R&D - MPEG DASH Test Media]
-- [Bitmovin Test Stream]
-- [DASH IF Test Assets Database]
-- [DASH Sequences · gpac/gpac Wiki · GitHub]
-- [Eyevinn Streaming Samples]
-- [MPEG DASH Sample Content - Bento4]
-- [Mux - HLS Streams]
-- [Rufael Demo Streams]
-- [Unified Streaming Demos]
-- [Unified Streaming Features Page]
+- [Apple Reference Streams]({{apple_reference_streams}})
+- [BBC R&D - MPEG DASH Test Media]({{bbc_r_d_mpeg_dash_test_media}})
+- [Bitmovin Test Stream]({{bitmovin_test_stream}})
+- [DASH-IF Test Assets Database]({{dash_if_test_assets_database}})
+- [DASH Sequences · gpac/gpac Wiki · GitHub]({{dash_sequences_gpac_wiki}})
+- [Eyevinn Streaming Samples]({{eyevinn_streaming_samples}})
+- [MPEG DASH Sample Content - Bento4]({{mpeg_dash_sample_content_bento4}})
+- [Mux - HLS Streams]({{mux_hls_streams}})
+- [Rufael Demo Streams]({{rufael_demo_streams}})
+- [Unified Streaming Demos]({{unified_streaming_demos}})
+- [Unified Streaming Features Page]({{unified_streaming_features_page}})
   
 
 ## Media Blogs, News and Insights
@@ -121,12 +122,12 @@ This repository will not host any scripts or tools.
 
 ## [Media Standards][media-standards]
 ### Interoprability 
-- [DASH-IF Interoperability Guidelines v5]
-- [DASH-IF Live Media Ingest Protocol]
-- [Microsoft/Azure Smooth Streaming Live Ingest Specification]
-- [HTTP Live Streaming Overview (HLS)]
-- [CTA-5005-A DASH-HLS Interoprability Specification]
-- [DVB A178-3 Targeted Advertisement Bluebook for DVB-DASH]
+- [DASH-IF Interoperability Guidelines v5]({{dash_if_interoperability_guidelines_v5}})
+- [DASH-IF Live Media Ingest Protocol]({{dash_if_live_media_ingest_protocol}})
+- [Microsoft/Azure Smooth Streaming Live Ingest Specification]({{microsoft_azure_smooth_streaming_live_ingest_specification}})
+- [HTTP Live Streaming Overview (HLS)]({{http_live_streaming_overview_hls}})
+- [CTA-5005-A DASH-HLS Interoprability Specification]({{cta_5005_a_dash_hls_interoprability_specification}})
+- [DVB A178-3 Targeted Advertisement Bluebook for DVB-DASH]({{dvb_a178_3_targeted_advertisement_bluebook_for_dvb_dash}})
   
 ### Presentation formats
 - [ISO/IEC 23009-01] - MPEG DASH (Defines both the metadata structure and associated media format(s))
@@ -149,148 +150,3 @@ This repository will not host any scripts or tools.
 
 
 [https://jamiefletcher.dev/http.video]:https://jamiefletcher.dev/http.video 
-
-<!-- External -->
-<!-- Media Preparation -->
-[EventMessageTrack]:https://github.com/unifiedstreaming/event-message-track
-[Bento4]:https://github.com/axiomatic-systems/Bento4
-[FFmpeg]:https://github.com/FFmpeg/FFmpeg
-[fmp4-ingest]:https://github.com/unifiedstreaming/fmp4-ingest
-[GPAC]:https://wiki.gpac.io/
-[PyCpix]:https://github.com/unifiedstreaming/pycpix
-[Shaka Packager]:https://github.com/shaka-project/shaka-packager
-
-
-<!-- Media Analysis & Conformance -->
-[Akamai stream-validator]:https://players.akamai.com/stream-validator
-[Apple HLS Tools]:https://developer.apple.com/documentation/http-live-streaming/using-apple-s-http-live-streaming-hls-tools
-[Aximon DRM Decoders]:https://tools.axinom.com/
-[DASH-IF Conformance]:https://conformance.dashif.org/
-[DASH-IF Content Protection List]:https://dashif.org/identifiers/content_protection/
-[Dolby Stream Validator]:https://ott.dolby.com/OnDelKits_dev/StreamValidator/Start_Here.html
-[Epic Labs Video Comparator]:https://github.com/epiclabs-io/epic-video-comparator
-[EventMessageTrack]:https://github.com/unifiedstreaming/event-message-track
-[fmp4ingest]:https://github.com/unifiedstreaming/fmp4-ingest
-[Google DAI SDK for HTML5 Video Suite Inspector]:https://googleads.github.io/googleads-ima-html5-dai/vsi/
-[GPAC/MP4BOX]:https://github.com/gpac/gpac/wiki/MP4Box
-[M2AMedia SCTE35 Dump for MPEGTS]:https://github.com/m2amedia/scte35dump
-[Middleman SCTE35/104 Parser]:https://tools.middleman.tv/scte35-parser
-[ThreeFive (Scte35)]:https://github.com/futzu/SCTE-35_threefive
-[Thumbcoil Video Inspector]:https://thumb.co.il/
-[Unified Streaming Validator]:https://validator.unified-streaming.com/
-
-
-<!-- Media Analysis & Conformance -->
-[Akamai Players]:https://players.akamai.com/players
-[Chrome Media internals]:chrome://media-internals
-[dash.js]:https://github.com/Dash-Industry-Forum/dash.js
-[Eyevinn stream coruptor]:https://github.com/Eyevinn/streaming-onboarding/blob/master/Stream-Corruptor.md
-[Man in the middle proxy]:https://github.com/mitmproxy/mitmproxy
-[Shaka-player]:https://github.com/shaka-project/shaka-player
-
-
-<!-- Media Test Streams -->
-[Apple Reference Streams]:https://developer.apple.com/streaming/examples/
-[BBC R&D - MPEG DASH Test Media]:http://rdmedia.bbc.co.uk/
-[Bitmovin Test Stream]:https://bitmovin.com/demos/stream-test
-[DASH IF Test Assets Database]:https://testassets.dashif.org/#testvector/list
-[DASH Sequences · gpac/gpac Wiki · GitHub]:https://github.com/gpac/gpac/wiki/DASH-Sequences
-[Eyevinn Streaming Samples]:https://github.com/Eyevinn/http-streaming-samples
-[MPEG DASH Sample Content | Bento4]:http://www.bento4.com/developers/dash/dash-sample-content/
-[Mux - HLS Streams]:https://test-streams.mux.dev/
-[Rufael Demo Streams]:https://dvb-2017-dm.s3.eu-central-1.amazonaws.com/overview.html
-[Unified Streaming Demos]:https://demo.unfied-streaming.com 
-[Unified Streaming Features Page]:https://demo.unified-streaming.com/k8s/features/stable/#!/mpd
-
-<!-- Media Standards - Interoprability -->  
-[DASH-IF Interoperability Guidelines v5]:https://dashif.org/guidelines/iop-v5/
-[DASH-IF Live Media Ingest Protocol]:https://dashif-documents.azurewebsites.net/Ingest/master/DASH-IF-Ingest.html
-[Microsoft/Azure Smooth Streaming Live Ingest Specification]:https://learn.microsoft.com/en-us/previous-versions/media-services/previous/media-services-fmp4-live-ingest-overview
-[HTTP Live Streaming Overview (HLS)]:https://developer.apple.com/documentation/http-live-streaming
-[CTA-5005-A DASH-HLS Interoprability Specification]:https://cdn.cta.tech/cta/media/media/resources/standards/cta-5005-a-final.pdf
-[DVB A178-3 Targeted Advertisement Bluebook for DVB-DASH]:https://dvb.org/?standard=dynamic-substitution-of-content-in-linear-broadcast-part-3-carriage-and-signalling-of-placement-opportunity-information-in-dvb-dash
-
-
-<!-- Media Standards - Presentation formats --> 
-[ISO/IEC 23009-01]:https://www.iso.org/standard/83314.html
-[IETF RFC8216]:https://datatracker.ietf.org/doc/html/draft-pantos-hls-rfc8216bis
-
-<!-- Media Standards - Segmentation & Container Formats -->
-[ISO/IEC 14496-12]:https://www.iso.org/standard/83102.html
-[ISO/IEC 23000-19]:https://www.iso.org/standard/85623.html
-[ISO/IEC 23001-18]:https://www.iso.org/standard/82529.html
-
-<!-- Media Standards - Compression & Sample Formats -->
-[ISO/IEC 14496-10]:https://www.iso.org/standard/83529.html
-[ISO/IEC 23008-2]:https://www.iso.org/standard/85457.html
-[ISO/IEC 14496-3]:https://www.iso.org/standard/76383.html
-[ISO/IEC 23008-3]:https://www.iso.org/standard/83525.html
-[ISO/IEC 14496-15]:https://www.iso.org/standard/83336.html
-[ISO/IEC 14496-30]:https://www.iso.org/standard/75394.html
-[ISO/IEC 23001-7]:https://iso.org/standard/84637.html
-
-<!-- Media Standards - Groups -->
-[3GPP]:https://www.3gpp.org/
-[Alliance for Open media]:https://aomedia.org/
-[ATSC]:https://www.atsc.org/
-[CP2PA]:https://c2pa.org/
-[CTA-Wave]:https://github.com/cta-wave
-[DASH-IF]:https://dashif.org/
-[DVB]:https://dvb.org/
-[HbbTV]:https://www.hbbtv.org/
-[ISO]:https://www.iso.org/home.html
-[ITU]:https://www.itu.int/en/Pages/default.aspx
-[MP4 Registration Authority]:https://mp4ra.org/
-[MPEG]:https://www.mpeg.org/about-mpeg/
-[SCTE]:https://www.scte.org/
-[SMPTE]:https://www.smpte.org/
-[SVTA]:https://www.svta.org/
-[W3C]:https://www.w3.org/
-
-<!-- Education -->
-[How Video Works]:https://howvideo.works/
-[https://awesome.video]:https://awesome.video
-[Streaming Learning Center]:https://streaminglearningcenter.com/
-[Leandro Moreira's Introduction to Digital Video]:https://github.com/leandromoreira/digital_video_introduction
-[The Ultimate Video Streaming Glossary: Explained By The Experts]:https://tinuiti.com/blog/ott-ads/video-streaming-glossary/
-
-<!-- Media Blogs and Insights -->
-[Advanced Television]:https://advanced-television.com/
-[Amagi Blog]:https://www.amagi.com/resources/
-[Anevia's blog]:https://anevia.com/blog/
-[AWS Developer Forums]:https://forums.aws.amazon.com/category.jspa?categoryID=43
-[AWS Elemental Live Knowledge Centre]:https://repost.aws/tags/TAdvB1VHw2SDinN3XY4E6oJQ/aws-elemental-live
-[AWS MediaLive Knowledge Centre]:https://repost.aws/tags/TAQT5TNwtgSqeM9NCSKfOJPQ/aws-elemental-medialive
-[AWS MediaTailor Knowledge Centre]:https://repost.aws/tags/TAtkvXWoCvTpe77g9M3Tuv_Q/aws-elemental-mediatailor
-[BBC Blogs - Technology & Creativity Blog]:https://www.bbc.co.uk/blogs/internet
-[BBC Design + Engineering – Medium]:https://medium.com/bbc-design-engineering
-[BBC iPlayer – BBC Design + Engineering – Medium]:https://medium.com/bbc-design-engineering/iplayer/home
-[Bitmovin Blog]:https://bitmovin.com/blog/
-[Blog – Streaming Learning Center]:https://streaminglearningcenter.com/blog
-[Broadcast Now]:https://www.broadcastnow.co.uk/tech
-[Euro - Streaming Media]:http://europe.streamingmedia.com/
-[Eyevinn Technology – Medium]:https://medium.com/@eyevinntechnology
-[FAST Services Are Growing in the Video Streaming World - Observer]:https://observer.com/2024/04/paramount-streaming-ceo-tom-ryan-speaks-growth-of-fast-services-in-streaming/
-[Future of TV Archives - Digiday]:https://digiday.com/future-of-tv/
-[Guide to vertical integration of major US TV/movie media]:https://imgur.com/gallery/dhrhkaZ
-[Haivision Blog]:https://www.haivision.com/products/kb-series/
-[IABM News]:https://www.theiabm.org/newslist/?news_type%5B%5D=Technology+News&topline_tag=
-[MPEG News]:https://mpeg.chiariglione.org/news
-[Mux Blog - Video technology and more]:https://mux.com/blog/
-[Netflix TechBlog]:https://netflixtechblog.com/
-[Sofia Digital Blog]:https://sofiadigital.com/blog/
-[SportsPro Media]:http://www.sportspromedia.com/
-[Streaming Forum]:http://www.streaming-forum.com/2019/LatestNewsArchive.aspx
-[Streaming Media]:https://www.streamingmedia.com/
-[Streamroot Blog]:https://blog.streamroot.io/
-[Televisual]:http://www.televisual.com/news.html
-[The Generative AI Tools Landscape - DataCamp]:https://www.datacamp.com/cheat-sheet/the-generative-ai-tools-landscape
-[The Global Media Landscape]:https://www.gwi.com/reports/global-media-landscape
-[TheDRMBlog]:https://go.buydrm.com/thedrmblog
-[TheoPlayer Blog]:https://www.theoplayer.com/blog
-[TVBEurope]:https://www.tvbeurope.com/
-[TvTechnology]:https://www.tvtechnology.com/
-[Video Delivery Landscape]:https://tinuiti.com/blog/ott-ads/video-streaming-glossary/https://divitel.com/video-delivery-landscape/
-[VRT Digital Products - Medium]:https://medium.com/vrt-digital-studio/
-[Wowza Blog]:https://www.wowza.com/blog/category/blog
-[Yospace Blog]:http://www.yospace.com/category/blog/

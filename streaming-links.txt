@@ -1,0 +1,120 @@
+
+
+## HLS
+
+### VOD
+https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8>HLS VOD - Big Buck Bunny</option>
+https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8>HLS VOD - Elephants Dream</option>
+
+
+### Live
+####  Low Latency
+https://llhls-demo.ovenmediaengine.com/app/stream/llhls.m3u8>HLS Low Latency - AirenSoft</option>
+https://5d6e17f1ca731.streamlock.net/LowLatencyBBB/myStream/playlist.m3u8>HLS Low Latency - Wowza</option>
+https://cdn-vos-ppp-01.vos360.video/Content/HLS_HLSCLEAR/Live/channel(PPP-LL-2HLS)/index.m3u8>HLS Low-Latency - Harmonic</option>
+https://ll-hls-test-apple.akamaized.net/llhls4/ll-hls-test-04/multi.m3u8&quot;,&quot;type&quot;:&quot;application/x-mpegurl&quot;,&quot;lowLatency&quot;:true}}">HLS Low Latency - Akamai</option>
+https://ll-hls-test.cdn-apple.com/llhls4/ll-hls-test-04/multi.m3u8>HLS Low Latency - Apple</option>
+https://ll-hls.softvelum.com/sldp/bbloop/playlist.m3u8>HLS Low Latency - Nimble Streamer</option>
+https://llhls-demo.flussonic.com/flussonic/index.ll.m3u8>HLS Low Latency - Flussonic</option>
+https://pf5.broadpeak-vcdn.com/bpk-tv/tvrll/llcmaf/index.m3u8>HLS Low Latency - Broadpeak</option>
+https://stream.mux.com/v69RSHhFelSm4701snP22dYz2jICy4E4FUyk02rW4gxRM.m3u8>HLS Low Latency - Mux</option>
+
+#### DASH
+https://akamaibroadcasteruseast.akamaized.net/cmaf/live/657078/akasource/out.mpd>DASH Low Latency - Akamai</option>
+https://cdn-vos-ppp-01.vos360.video/Content/DASH_DASHCLEAR2/Live/channel(PPP-LL-2DASH)/master.mpd>DASH Low Latency - Harmonic</option>
+
+
+https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8
+https://akamai-axtest.akamaized.net/routes/lapd-v1-acceptance/www_c4/Manifest.m3u8
+https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8
+https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8>Big Buck Bunny - adaptive qualities
+https://cdn.jwplayer.com/manifests/pZxWPRg4.m3u8>FDR - CDN packaged, 4s segments, 180p - 1080p
+https://test-streams.mux.dev/x36xhzz/url_6/193039199_mp4_h264_aac_hq_7.m3u8>Big Buck Bunny - 480p only',
+https://test-streams.mux.dev/test_001/stream.m3u8>ARTE China,ABR',
+
+### SSAI
+https://test-streams.mux.dev/dai-discontinuity-deltatre/manifest.m3u8>Ad-insertion in event stream',
+
+
+https://playertest.longtailvideo.com/adaptive/issue666/playlists/cisq0gim60007xzvi505emlxx.m3u8>Surveillance footage
+https://playertest.longtailvideo.com/adaptive/captions/playlist.m3u8>CNN special report, with CC',
+https://playertest.longtailvideo.com/adaptive/customIV/prog_index.m3u8> Custom IV with bad PTS DTS',
+https://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8>AES-128 encrypted, ABR',
+https://playertest.longtailvideo.com/adaptive/aes-with-tracks/master.m3u8>AES-128 encrypted, TS main with AAC audio track',
+https://playertest.longtailvideo.com/adaptive/vod-with-mp3/manifest.m3u8>MP3 VOD demo',
+https://pl.streamingvideoprovider.com/mp3-playlist/playlist.m3u8>MPEG Audio Only demo',
+
+
+https://storage.googleapis.com/shaka-demo-assets/angel-one-hls/hls.m3u8>HLS fMP4 Angel-One multiple audio-tracks',
+https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s-fmp4/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8>HLS fMP4 by Bitmovin',
+https://bitmovin-a.akamaihd.net/content/dataset/multi-codec/hevc/stream_fmp4.m3u8>HLS HEVC fMP4 by Bitmovin (Safari and Edge? only as of 2020-08)',
+https://test-streams.mux.dev/pts_shift/master.m3u8> DK Turntable, PTS shifted by 2.3s',
+https://storage.googleapis.com/shaka-demo-assets/angel-one-widevine-hls/hls.m3u8> Shaka-packager Widevine DRM (EME) HLS-fMP4 - Angel One Demo',
+https://playertest.longtailvideo.com/adaptive/elephants_dream_v4/index.m3u8> Alternate audio tracks, and multiple VTT tracks',
+https://playertest.longtailvideo.com/adaptive/alt-audio-no-video/sintel/playlist.m3u8',
+https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_adv_example_hevc/master.m3u8> Advanced stream (HEVC/H.264, AC-3/AAC,  WebVTT, fMP4 segments)',
+
+
+https://mtoczko.github.io/hls-test-streams/test-group/playlist.m3u8> Group-id: subtitle and audio',
+https://playertest.longtailvideo.com/adaptive/elephants_dream_v4/redundant.m3u8> Redundant levels with subtitle and audio track groups',
+https://devoldemar.github.io/streams/hls/bipbop/hevc.m3u8> Advanced stream (HEVC Main 10, MPEG-TS segments)',
+https://bitmovin-a.akamaihd.net/content/dataset/multi-codec/hevc/v720p_ts.m3u8>HLS M2TS by Bitmovin (HEVC Main, many NALUs overflowing PESes, video only)',
+
+### unified streaming
+"https://dai-gcp-eu-west-1-1.daiconnect.com/live/dash/usp/scte35-stable/.mpd",
+"https://dai-gcp-eu-west-1-1.daiconnect.com/live/dash/usp/vod2live-stable/.mpd",
+"https://dai-gcp-eu-west-1-1.daiconnect.com/live/hls/usp/scte35-stable/.m3u8",
+"https://dai-gcp-eu-west-1-1.daiconnect.com/live/hls/usp/vod2live-stable/.m3u8",
+"https://dai-gcp-eu-west-1-1.daiconnect.com/vod/dash/usp/vod_dash/.mpd?CURL=https://demo.unified-streaming.com/k8s/avod-scte35-aip/stable/remix/smil-origin/avod-smil/eyJtYWluIjoiaHR0cDovL3MzLmludGVybmFsLnVuaWZpZWQtc3RyZWFtaW5nLmNvbS9iaWctYnVjay1idW5ueS9iaWctYnVjay1idW5ueV9kcmVmLm1wNCIsImJyZWFrcyI6W3sidGltZSI6MTAsImR1cmF0aW9uIjozMH1dfQ==.mp4/.mpd",
+"https://dai-gcp-eu-west-1-1.daiconnect.com/vod/hls/usp/vod_cmaf/.m3u8?CURL=https://demo.unified-streaming.com/k8s/avod-scte35-aip/stable/remix/smil-origin/avod-smil/eyJtYWluIjoiaHR0cDovL3MzLmludGVybmFsLnVuaWZpZWQtc3RyZWFtaW5nLmNvbS9iaWctYnVjay1idW5ueS9iaWctYnVjay1idW5ueV9kcmVmLm1wNCIsImJyZWFrcyI6W3sidGltZSI6MTAsImR1cmF0aW9uIjozMH1dfQ==.mp4/.m3u8?hls_fmp4",
+"https://demo.unified-streaming.com/k8s/avod-scte35-aip/trunk/remix/smil-origin/avod-smil/eyJtYWluIjoiaHR0cDovL3MzLmludGVybmFsLnVuaWZpZWQtc3RyZWFtaW5nLmNvbS9iaWctYnVjay1idW5ueS9iaWctYnVjay1idW5ueV9kcmVmLm1wNCIsImJyZWFrcyI6W3sidGltZSI6MTAsImR1cmF0aW9uIjozMH1dfQ==.mp4/.m3u8?hls_fmp4",
+"https://demo.unified-streaming.com/k8s/avod-scte35-aip/trunk/remix/smil-origin/avod-smil/eyJtYWluIjoiaHR0cDovL3MzLmludGVybmFsLnVuaWZpZWQtc3RyZWFtaW5nLmNvbS9iaWctYnVjay1idW5ueS9iaWctYnVjay1idW5ueV9kcmVmLm1wNCIsImJyZWFrcyI6W3sidGltZSI6MTAsImR1cmF0aW9uIjozMH1dfQ==.mp4/.mpd",
+"https://demo.unified-streaming.com/k8s/cpix-multiple-keys/stable/video/tears-of-steel/tears-of-steel-multikey-cenc.ism/.m3u8",
+"https://demo.unified-streaming.com/k8s/cpix-multiple-keys/stable/video/tears-of-steel/tears-of-steel-multikey-cenc.ism/.mpd",
+"https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel-multikey-cenc.ism/.m3u8",
+"https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel-multikey-cenc.ism/.mpd",
+"https://demo.unified-streaming.com/k8s/keyrotation/stable/keyrotation/keyrotation.isml/.m3u8",
+"https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8",
+"https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.mpd",
+"https://demo.unified-streaming.com/k8s/live/trunk/scte35.isml/.m3u8",
+"https://demo.unified-streaming.com/k8s/live/trunk/scte35.isml/.mpd",
+"https://demo.unified-streaming.com/k8s/manifest-edit/stable/usp-s3-storage/tears-of-steel/tears-of-steel-multi-lang.ism/.m3u8?python_pipeline_config=m3u8/default_audio_it&suppress_query_parameters",
+"https://demo.unified-streaming.com/k8s/manifest-edit/stable/usp-s3-storage/tears-of-steel/tears-of-steel-multiple-subtitles.ism/.mpd?python_pipeline_config=mpd/hd_only&suppress_query_parameters"
+"https://demo.unified-streaming.com/k8s/npvr/stable/ism/scte35/fixed.ism/.mpd",
+"https://demo.unified-streaming.com/k8s/vod2live/stable/unified-learning.isml/.m3u8?filter=%28type!=%22textstream%22%29",
+"https://demo.unified-streaming.com/k8s/vod2live/stable/unified-learning.isml/.mpd?filter=%28type!=%22textstream%22%29",
+"https://demo.unified-streaming.com/k8s/warning-slates/stable/remix/warning/UmVwbGFjZSB0aGlzIHdpdGggeW91ciBzbGF0ZSBtZXNzYWdlLg==.mp4/.mpd",
+"https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/dash/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/live/trunk/scte35.isml/.mpd",
+"https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/master/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/avod-scte35-mediatailor/stable/remix/smil-origin/avod-smil/eyJtYWluIjoiaHR0cDovL3MzLmludGVybmFsLnVuaWZpZWQtc3RyZWFtaW5nLmNvbS9iaWctYnVjay1idW5ueS9iaWctYnVjay1idW5ueV9kcmVmLm1wNCIsImJyZWFrcyI6W3sidGltZSI6MTAsImR1cmF0aW9uIjozMH1dfQ==.mp4/.m3u8?hls_fmp4",
+"https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/master/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/avod-scte35-mediatailor/stable/remix/smil-origin/avod-smil/eyJtYWluIjoiaHR0cDovL3MzLmludGVybmFsLnVuaWZpZWQtc3RyZWFtaW5nLmNvbS9iaWctYnVjay1idW5ueS9iaWctYnVjay1idW5ueV9kcmVmLm1wNCIsImJyZWFrcyI6W3sidGltZSI6MTAsImR1cmF0aW9uIjozMH1dfQ==.mp4/.m3u8",
+"https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/master/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/live/trunk/scte35.isml/.m3u8",
+"https://e0540acdbd904d78a81a18aaab571c51.mediatailor.eu-west-1.amazonaws.com/v1/master/395d5cc69139dc61f29cf36ab89ff61193cc5bdb/USP_Demo/k8s/vod2live/stable/unified-learning.isml/.m3u8?filter=%28type!=%22textstream%22%29",
+"https://live.serverside.ai/hls/47d507f7-e08b-41a6-b9ea-63db94f4ded3/master.m3u8?api-key=2f1ee512-1180-4766-8a06-437463bd590c",
+"https://virtual-channel.unified-streaming.com/demo_channel-stable.isml/.m3u8",
+"https://virtual-channel.unified-streaming.com/demo_channel-stable.isml/.mpd",
+"https://virtual-channel.unified-streaming.com/subtitle_stupid.isml/.mpd",
+
+https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.mpd
+https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.m3u8
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.m3u8?filter=(type==%22audio%22%26%26systemBitrate<100000)||(type==%22video%22%26%26systemBitrate<1024000)&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-multi-lang.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/master_cbcs_origin.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-multi-lang.ism/.mpd?filter=(type!=%22video%22)&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.mp4/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.m3u8?vend=00:01:00 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-tiled-thumbnails-timeline.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.m3u8?t=00:06:00-00:07:30&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-av1.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.f4m?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-aes.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.mp4/.f4m?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-en.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-hls-playready.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+/demo.unified-streaming.com/k8s/features/trunk/no-handler-origin/tears-of-steel/tears-of-steel-wvtt-sidecar.mpd
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-wvtt.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-hevc.ism/.m3u8?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel.ism/.f4m?t=00:06:00-00:07:30&t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-tiled-thumbnails-numbered.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-dash-widevine.ism/.mpd?t=00:00:00.000-00:00:15.000 OK
+https://demo.unified-streaming.com/k8s/features/trunk/video/tears-of-steel/tears-of-steel-multi-lang.ism/.m3u8?filter=(type!=%22video%22)&t=00:00:00.000-00:00:15.000 OK

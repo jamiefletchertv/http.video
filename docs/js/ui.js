@@ -1,3 +1,5 @@
+let previousTreeState = {};
+
 export function updateTrackTable(tracks) {
   const trackTable = document.getElementById('trackTable');
   const trackTableBody = trackTable.querySelector('tbody');
@@ -24,13 +26,11 @@ export function updateTrackTable(tracks) {
       cell.textContent = track[column] || 'n/a';
     });
   });
-  trackTable.style.display = '';
 }
 
 export function updateEventTable(events) {
   const eventTable = document.getElementById('eventTable');
   const eventTableBody = eventTable.querySelector('tbody');
-  events.sort((a, b) => new Date(b.start) - new Date(a.start));
 
   eventTableBody.innerHTML = '';
   events.forEach(event => {
@@ -40,18 +40,32 @@ export function updateEventTable(events) {
     row.insertCell().textContent = event.end || 'n/a';
     row.insertCell().textContent = event.duration || 'n/a';
   });
-  eventTable.style.display = events.length ? '' : 'none';
+  sortEventTable(); // Ensure table is sorted
 }
 
-export function highlightActiveEvent(events) {
-  const eventTableBody = document.getElementById('eventTable').querySelector('tbody');
-  const currentTime = new Date().toISOString();
+function sortEventTable() {
+  const eventTable = document.getElementById('eventTable');
+  const eventTableBody = eventTable.querySelector('tbody');
+  const rows = Array.from(eventTableBody.rows);
+
+  rows.sort((a, b) => {
+    const dateA = new Date(a.cells[1].textContent);
+    const dateB = new Date(b.cells[1].textContent);
+    return dateB - dateA; // Sort descending
+  });
+
+  eventTableBody.innerHTML = '';
+  rows.forEach(row => eventTableBody.appendChild(row));
+}
+
+export function highlightActiveEvent(mediaTime) {
+  const eventTable = document.getElementById('eventTable');
+  const eventTableBody = eventTable.querySelector('tbody');
 
   Array.from(eventTableBody.rows).forEach(row => {
-    const eventId = row.cells[0].textContent;
-    const event = events.find(e => e.id === eventId);
-
-    if (event && event.start <= currentTime && event.end >= currentTime) {
+    const start = row.cells[1].textContent;
+    const end = row.cells[2].textContent;
+    if (mediaTime >= start && mediaTime <= end) {
       row.classList.add('highlighted');
     } else {
       row.classList.remove('highlighted');
@@ -59,21 +73,114 @@ export function highlightActiveEvent(events) {
   });
 }
 
-export function showActiveEventOverlay(events) {
-  const overlay = document.getElementById('eventOverlay');
-  const currentTime = new Date().toISOString();
-  const activeEvent = events.find(event => event.start <= currentTime && event.end >= currentTime);
+export function showActiveEventOverlay(mediaTime) {
+  const eventOverlay = document.getElementById('eventOverlay');
+  const events = Array.from(document.getElementById('eventTable').querySelector('tbody').rows).map(row => ({
+    id: row.cells[0].textContent,
+    start: row.cells[1].textContent,
+    end: row.cells[2].textContent,
+    duration: row.cells[3].textContent
+  }));
 
+  const activeEvent = events.find(event => mediaTime >= event.start && mediaTime <= event.end);
   if (activeEvent) {
-    overlay.textContent = `Active Event ID: ${activeEvent.id}`;
-    overlay.style.display = 'block';
+    eventOverlay.textContent = `Active Event: ${activeEvent.id} until ${activeEvent.end}`;
+    eventOverlay.style.display = 'block';
   } else {
-    overlay.style.display = 'none';
+    eventOverlay.style.display = 'none';
   }
 }
 
 export function showLiveEdgeOverlay(liveEdgeTime) {
-  const overlay = document.getElementById('liveEdgeOverlay');
-  overlay.textContent = `Live Edge Time: ${liveEdgeTime}`;
-  overlay.style.display = 'block';
+  const liveEdgeOverlay = document.getElementById('liveEdgeOverlay');
+  liveEdgeOverlay.textContent = `Live Edge Time: ${liveEdgeTime}`;
+  liveEdgeOverlay.style.display = 'block';
+}
+
+export function showMediaTimeOverlay(mediaTime) {
+  const mediaTimeOverlay = document.getElementById('mediaTimeOverlay');
+  mediaTimeOverlay.textContent = `Media Time: ${mediaTime}`;
+  mediaTimeOverlay.style.display = 'block';
+}
+
+function trackToString(track) {
+  return JSON.stringify(track);
+}
+
+function compareTreeState(newState, oldState) {
+  for (let key in newState) {
+    if (!oldState[key] || trackToString(newState[key]) !== trackToString(oldState[key])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function renderMetadataTree(tracks) {
+  const metadataTree = document.getElementById('metadataTree');
+  const newTreeState = {};
+
+  const groupedTracks = tracks.reduce((acc, track) => {
+    const type = track.type;
+    if (!acc[type]) acc[type] = [];
+    acc[type].push(track);
+    return acc;
+  }, {});
+
+  Object.keys(groupedTracks).forEach(type => {
+    newTreeState[type] = groupedTracks[type];
+  });
+
+  if (compareTreeState(newTreeState, previousTreeState)) {
+    return;
+  }
+
+  previousTreeState = newTreeState;
+  metadataTree.innerHTML = '<h2>Track Information</h2>';
+
+  Object.keys(groupedTracks).forEach(type => {
+    const typeHeader = document.createElement('h3');
+    typeHeader.innerHTML = `<i class="fa-solid fa-circle-chevron-right"></i> ${type}`;
+    typeHeader.className = 'tree-header';
+    typeHeader.addEventListener('click', () => {
+      const typeContent = typeHeader.nextElementSibling;
+      typeContent.style.display = typeContent.style.display === 'none' ? 'block' : 'none';
+      typeHeader.querySelector('i').classList.toggle('fa-circle-chevron-down');
+      typeHeader.querySelector('i').classList.toggle('fa-circle-chevron-right');
+    });
+    metadataTree.appendChild(typeHeader);
+
+    const typeContent = document.createElement('div');
+    typeContent.style.display = 'none';
+
+    groupedTracks[type].forEach(track => {
+      const trackHeader = document.createElement('div');
+      trackHeader.innerHTML = `<i class="fa-solid fa-circle-chevron-right"></i> Representation ID: ${track.id}`;
+      trackHeader.className = 'track-header';
+      trackHeader.addEventListener('click', () => {
+        const trackContent = trackHeader.nextElementSibling;
+        trackContent.style.display = trackContent.style.display === 'none' ? 'block' : 'none';
+        trackHeader.querySelector('i').classList.toggle('fa-circle-chevron-down');
+        trackHeader.querySelector('i').classList.toggle('fa-circle-chevron-right');
+      });
+      typeContent.appendChild(trackHeader);
+
+      const trackContent = document.createElement('div');
+      trackContent.className = 'track-content';
+      trackContent.style.display = 'none';
+      trackContent.innerHTML = `
+        <div>Bitrate: ${track.bitrate}</div>
+        <div>Width: ${track.width}</div>
+        <div>Height: ${track.height}</div>
+        <div>Frame Rate: ${track.frameRate}</div>
+        <div>Audio Sampling Rate: ${track.audioSamplingRate}</div>
+        <div>Segment Duration: ${track.segmentDuration}</div>
+      `;
+      typeContent.appendChild(trackContent);
+    });
+
+    metadataTree.appendChild(typeContent);
+  });
+
+  metadataTree.style.display = 'block';
 }

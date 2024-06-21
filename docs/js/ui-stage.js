@@ -136,17 +136,17 @@ export function renderMetadataTree(tracks) {
   }
 
   previousTreeState = newTreeState;
-  metadataTree.innerHTML = '';
+  metadataTree.innerHTML = '<h2>Track Information</h2>';
 
   Object.keys(groupedTracks).forEach(type => {
     const typeHeader = document.createElement('h3');
-    typeHeader.innerHTML = `<i class="fa-regular fa-square-caret-right"></i> ${type}`;
+    typeHeader.innerHTML = `<i class="fa-solid fa-circle-chevron-right"></i> ${type}`;
     typeHeader.className = 'tree-header';
     typeHeader.addEventListener('click', () => {
       const typeContent = typeHeader.nextElementSibling;
       typeContent.style.display = typeContent.style.display === 'none' ? 'block' : 'none';
-      typeHeader.querySelector('i').classList.toggle('fa-square-caret-down');
-      typeHeader.querySelector('i').classList.toggle('fa-square-caret-right');
+      typeHeader.querySelector('i').classList.toggle('fa-circle-chevron-down');
+      typeHeader.querySelector('i').classList.toggle('fa-circle-chevron-right');
     });
     metadataTree.appendChild(typeHeader);
 
@@ -155,14 +155,13 @@ export function renderMetadataTree(tracks) {
 
     groupedTracks[type].forEach(track => {
       const trackHeader = document.createElement('div');
-      trackHeader.innerHTML = `<i class="fa-regular fa-square-caret-right"></i> Representation ID: ${track.id}`;
+      trackHeader.innerHTML = `<i class="fa-solid fa-circle-chevron-right"></i> Representation ID: ${track.id}`;
       trackHeader.className = 'track-header';
       trackHeader.addEventListener('click', () => {
         const trackContent = trackHeader.nextElementSibling;
         trackContent.style.display = trackContent.style.display === 'none' ? 'block' : 'none';
-        trackHeader.querySelector('i').classList.toggle('fa-square-caret-down');
-        trackHeader.querySelector('i').classList.toggle('fa-square-caret-right');
-        
+        trackHeader.querySelector('i').classList.toggle('fa-circle-chevron-down');
+        trackHeader.querySelector('i').classList.toggle('fa-circle-chevron-right');
       });
       typeContent.appendChild(trackHeader);
 

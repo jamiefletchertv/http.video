@@ -1,4 +1,3 @@
-// Custom function to parse HLS manifest
 export async function parseHlsManifest(manifestUri) {
   const response = await fetch(manifestUri);
   const manifestText = await response.text();
@@ -69,7 +68,6 @@ export async function parseHlsManifest(manifestUri) {
   return tracks;
 }
 
-// Parse HLS events (EXT-X-DATERANGE)
 export async function parseHlsEvents(manifestUri) {
   const response = await fetch(manifestUri);
   const manifestText = await response.text();

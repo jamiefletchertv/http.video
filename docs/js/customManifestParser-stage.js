@@ -85,13 +85,17 @@ export class CustomManifestParser {
         const representations = adaptationSet.getElementsByTagName('Representation');
         Array.from(representations).forEach((representation) => {
           const representationId = representation.getAttribute('id');
-          const bandwidth = representation.getAttribute('bandwidth') || 'n/a';
-          const width = adaptationSet.getAttribute('width') || 'n/a';
-          const height = adaptationSet.getAttribute('height') || 'n/a';
-          const frameRate = adaptationSet.getAttribute('frameRate') || 'n/a';
-          const audioSamplingRate = adaptationSet.getAttribute('audioSamplingRate') || 'n/a';
+          const bandwidth = representation.getAttribute('bandwidth') || adaptationSet.getAttribute('minBandwidth') || 'n/a';
+          const width = representation.getAttribute('width') || adaptationSet.getAttribute('width') || 'n/a';
+          const height = representation.getAttribute('height') || adaptationSet.getAttribute('height') || 'n/a';
+          const frameRate = representation.getAttribute('frameRate') || adaptationSet.getAttribute('frameRate') || 'n/a';
+          const audioSamplingRate = representation.getAttribute('audioSamplingRate') || adaptationSet.getAttribute('audioSamplingRate') || 'n/a';
+          const scanType = representation.getAttribute('scanType') || adaptationSet.getAttribute('scanType') || 'n/a';
+          const codecs = representation.getAttribute('codecs') || adaptationSet.getAttribute('codecs') || 'n/a';
+          const par = adaptationSet.getAttribute('par') || 'n/a';
+          const sar = adaptationSet.getAttribute('sar') || 'n/a';
 
-          //console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
+          console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
 
           variants.push({
             id: representationId,
@@ -101,6 +105,10 @@ export class CustomManifestParser {
             height: height !== 'n/a' ? parseInt(height) : 'n/a',
             frameRate: frameRate !== 'n/a' ? parseFloat(frameRate) : 'n/a',
             audioSamplingRate: audioSamplingRate !== 'n/a' ? parseFloat(audioSamplingRate) : 'n/a',
+            scanType: scanType,
+            codecs: codecs,
+            par: par,
+            sar: sar,
             segmentDuration: 'n/a' // Default segment duration
           });
         });
@@ -135,8 +143,8 @@ export class CustomManifestParser {
           const durationString = `${String(durationHours).padStart(2, '0')}:${String(durationMinutes).padStart(2, '0')}:${String(durationSeconds).padStart(9, '0')}`;
 
           const messageData = event.textContent;
-          //console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
-          //console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
+          console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
+          console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
 
           events.push({
             id: event.getAttribute('id') || 'n/a',

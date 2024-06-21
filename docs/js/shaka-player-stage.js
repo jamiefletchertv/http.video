@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
       eventOverlay.classList.remove('hidden');
     } else {
       eventTable.classList.add('hidden');
-      eventOverlay.classList.add('hidden');
+      eventOverlay.style.display = 'none';
     }
   });
 
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
       liveEdgeOverlay.classList.remove('hidden');
       mediaTimeOverlay.classList.remove('hidden');
     } else {
-      liveEdgeOverlay.classList.add('hidden');
-      mediaTimeOverlay.classList.add('hidden');
+      liveEdgeOverlay.style.display = 'none';
+      mediaTimeOverlay.style.display = 'none';
     }
   });
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const result = await parser.parseManifest(manifestUri);
         updateTrackTable(result.tracks);
         updateEventTable(result.events);
-        renderMetadataTree(result.tracks);
+        renderMetadataTree(result.tracks); // Ensure the metadata tree is populated
 
         if (result.type === 'dynamic') {
           const minimumUpdatePeriod = result.minimumUpdatePeriod || 5; // Default to 5 seconds if not specified
@@ -163,11 +163,22 @@ document.addEventListener('DOMContentLoaded', function () {
         manifestSelector.value = '';
         trackTable.classList.add('hidden');
         eventTable.classList.add('hidden');
-        eventOverlay.classList.add('hidden');
-        liveEdgeOverlay.classList.add('hidden');
-        mediaTimeOverlay.classList.add('hidden');
-        metadataTree.innerHTML = '';
+        hideOverlays();
+        resetToggles();
+        metadataTree.innerHTML = '<h2>Track Information</h2>';
       });
     }
+  }
+
+  function hideOverlays() {
+    eventOverlay.style.display = 'none';
+    liveEdgeOverlay.style.display = 'none';
+    mediaTimeOverlay.style.display = 'none';
+  }
+
+  function resetToggles() {
+    toggleTrackInfo.checked = false;
+    toggleTimedMetadata.checked = false;
+    toggleManifestTiming.checked = false;
   }
 });

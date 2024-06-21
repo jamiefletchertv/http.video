@@ -1,166 +1,177 @@
-export class CustomManifestParser {
-  constructor() {
-    this.curId_ = 0;
-    this.config_ = null;
-  }
+import { CustomManifestParser } from './customManifestParser-stage.js';
+import { updateTrackTable, updateEventTable, highlightActiveEvent, showActiveEventOverlay, showLiveEdgeOverlay, showMediaTimeOverlay, renderMetadataTree } from './ui-stage.js';
+import { parseHlsManifest, parseHlsEvents } from './utils-stage.js';
 
-  configure(config) {
-    this.config_ = config;
-    console.log('Configuring custom manifest parser with config:', config);
-  }
+document.addEventListener('DOMContentLoaded', function () {
+  const video = document.getElementById('video');
+  const manifestSelector = document.getElementById('manifestSelector');
+  const customManifestUrl = document.getElementById('customManifestUrl');
+  const playButton = document.getElementById('playButton');
+  const resetButton = document.getElementById('resetButton');
+  const feedback = document.getElementById('feedback');
+  const errorMessage = document.getElementById('errorMessage');
+  const trackTable = document.getElementById('trackTable');
+  const eventTable = document.getElementById('eventTable');
+  const eventOverlay = document.getElementById('eventOverlay');
+  const liveEdgeOverlay = document.getElementById('liveEdgeOverlay');
+  const mediaTimeOverlay = document.getElementById('mediaTimeOverlay');
+  const metadataTree = document.getElementById('metadataTree');
 
-  async start(uri, playerInterface) {
-    console.log('Starting custom manifest parser for URI:', uri);
-    const type = shaka.net.NetworkingEngine.RequestType.MANIFEST;
-    const request = {
-      uris: [uri],
-      method: 'GET',
-      retryParameters: this.config_ ? this.config_.retryParameters : shaka.net.NetworkingEngine.defaultRetryParameters()
-    };
-    const response = await playerInterface.networkingEngine.request(type, request).promise;
-    return this.loadManifest_(response.data);
-  }
+  const toggleTrackInfo = document.getElementById('toggleTrackInfo');
+  const toggleTimedMetadata = document.getElementById('toggleTimedMetadata');
+  const toggleManifestTiming = document.getElementById('toggleManifestTiming');
 
-  stop() {
-    console.log('Stopping custom manifest parser');
-    return Promise.resolve();
-  }
+  let shakaPlayer = null;
+  let updateInterval = null;
+  let mediaTimeInterval = null;
 
-  loadManifest_(data) {
-    console.log('Loading manifest data');
-    const mpd = new DOMParser().parseFromString(data, 'application/xml');
-    const timeline = new shaka.media.PresentationTimeline(null, 0);
-    const duration = parseFloat(mpd.querySelector('MPD').getAttribute('mediaPresentationDuration') || '3600');
-    timeline.setDuration(duration);
+  // Play button click event
+  playButton.addEventListener('click', () => {
+    const manifestUri = manifestSelector.value || customManifestUrl.value.trim();
+    if (!manifestUri) {
+      feedback.textContent = 'Please select or enter a valid manifest URL.';
+      return;
+    }
+    loadPlayer(manifestUri);
+    feedback.textContent = `Active Player: Shaka Player`;
+  });
 
-    const periods = mpd.getElementsByTagName('Period');
-    const variants = [];
-    const textStreams = [];
-    const segmentTimelines = [];
-    const events = [];
+  // Reset button click event
+  resetButton.addEventListener('click', () => {
+    resetPlayer();
+  });
 
-    Array.from(periods).forEach((period, periodIndex) => {
-      const adaptationSets = period.getElementsByTagName('AdaptationSet');
-      Array.from(adaptationSets).forEach((adaptationSet, adaptationIndex) => {
-        const mimeType = adaptationSet.getAttribute('mimeType') || 'n/a';
-        let type = 'unknown';
-        if (mimeType.includes('video')) type = 'video';
-        else if (mimeType.includes('audio')) type = 'audio';
-        else if (mimeType.includes('text')) type = 'text';
+  // Toggle switches
+  toggleTrackInfo.addEventListener('change', () => {
+    if (toggleTrackInfo.checked) {
+      trackTable.classList.remove('hidden');
+    } else {
+      trackTable.classList.add('hidden');
+    }
+  });
 
-        const segmentTemplate = adaptationSet.querySelector('SegmentTemplate');
-        const timescale = segmentTemplate ? parseFloat(segmentTemplate.getAttribute('timescale')) || 1 : 1;
+  toggleTimedMetadata.addEventListener('change', () => {
+    if (toggleTimedMetadata.checked) {
+      eventTable.classList.remove('hidden');
+      eventOverlay.classList.remove('hidden');
+    } else {
+      eventTable.classList.add('hidden');
+      eventOverlay.classList.add('hidden');
+    }
+  });
 
-        if (segmentTemplate) {
-          const segmentTimeline = segmentTemplate.querySelector('SegmentTimeline');
-          if (segmentTimeline) {
-            const segments = [];
-            Array.from(segmentTimeline.getElementsByTagName('S')).forEach((s, segmentIndex) => {
-              const t = parseInt(s.getAttribute('t') || '0');
-              const d = parseInt(s.getAttribute('d') || '0');
-              const r = parseInt(s.getAttribute('r') || '0');
+  toggleManifestTiming.addEventListener('change', () => {
+    if (toggleManifestTiming.checked) {
+      liveEdgeOverlay.classList.remove('hidden');
+      mediaTimeOverlay.classList.remove('hidden');
+    } else {
+      liveEdgeOverlay.classList.add('hidden');
+      mediaTimeOverlay.classList.add('hidden');
+    }
+  });
 
-              let liveEdgeTime = t + d / timescale; // Calculate the initial segment end time
-              if (r > 0) {
-                liveEdgeTime += (r * d) / timescale;
-              }
+  // Load the player with the manifest URI
+  async function loadPlayer(manifestUri) {
+    // Stop the video and clear any existing player instance
+    if (shakaPlayer) {
+      await shakaPlayer.destroy();
+      shakaPlayer = null;
+    }
 
-              const segmentDurationSeconds = d / timescale;
+    if (updateInterval) {
+      clearInterval(updateInterval);
+      updateInterval = null;
+    }
 
-              console.log(`Period ${periodIndex}, AdaptationSet ${adaptationIndex}, Segment ${segmentIndex}`);
-              console.log(`Timescale: ${timescale}`);
-              console.log(`t: ${t}, d: ${d}, r: ${r}, liveEdgeTime: ${liveEdgeTime}, segmentDurationSeconds: ${segmentDurationSeconds}`);
+    if (mediaTimeInterval) {
+      clearInterval(mediaTimeInterval);
+      mediaTimeInterval = null;
+    }
 
-              let liveEdgeTimeIso = 'Invalid time';
-              if (!isNaN(liveEdgeTime) && liveEdgeTime > 0 && liveEdgeTime < Number.MAX_SAFE_INTEGER) {
-                const liveEdgeDate = new Date(liveEdgeTime * 1000);
-                if (liveEdgeDate instanceof Date && !isNaN(liveEdgeDate.getTime())) {
-                  liveEdgeTimeIso = liveEdgeDate.toISOString();
-                }
-              }
+    const trackTableBody = trackTable.querySelector('tbody');
+    const eventTableBody = eventTable.querySelector('tbody');
 
-              console.log(`liveEdgeTimeIso: ${liveEdgeTimeIso}`);
-              segments.push({ t, d, r, live_edge_time: liveEdgeTimeIso, segment_duration_seconds: segmentDurationSeconds });
-            });
-            segmentTimelines.push({ adaptationSet: adaptationSet.getAttribute('id'), segments });
-          }
+    trackTableBody.innerHTML = '';
+    eventTableBody.innerHTML = '';
+
+    shakaPlayer = new shaka.Player(video);
+    try {
+      await shakaPlayer.load(manifestUri);
+      video.play();
+      customManifestUrl.value = ''; // Clear the input field on successful load
+      errorMessage.textContent = ''; // Clear any previous error message
+
+      mediaTimeInterval = setInterval(() => {
+        const currentTime = video.currentTime;
+        const mediaTime = new Date(currentTime * 1000).toISOString();
+        if (toggleManifestTiming.checked) {
+          showMediaTimeOverlay(mediaTime);
         }
 
-        const representations = adaptationSet.getElementsByTagName('Representation');
-        Array.from(representations).forEach((representation) => {
-          const representationId = representation.getAttribute('id');
-          const bandwidth = representation.getAttribute('bandwidth') || 'n/a';
-          const width = adaptationSet.getAttribute('width') || 'n/a';
-          const height = adaptationSet.getAttribute('height') || 'n/a';
-          const frameRate = adaptationSet.getAttribute('frameRate') || 'n/a';
-          const audioSamplingRate = adaptationSet.getAttribute('audioSamplingRate') || 'n/a';
+        if (toggleTimedMetadata.checked) {
+          // Highlight active events and show overlays based on media time
+          highlightActiveEvent(mediaTime);
+          showActiveEventOverlay(mediaTime);
+        }
+      }, 1000);
 
-          console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
+      if (manifestUri.endsWith('.mpd')) {
+        const parser = new CustomManifestParser();
+        const result = await parser.parseManifest(manifestUri);
+        updateTrackTable(result.tracks);
+        updateEventTable(result.events);
+        renderMetadataTree(result.tracks);
 
-          variants.push({
-            id: representationId,
-            type: type,
-            bitrate: bandwidth !== 'n/a' ? parseInt(bandwidth) : 'n/a',
-            width: width !== 'n/a' ? parseInt(width) : 'n/a',
-            height: height !== 'n/a' ? parseInt(height) : 'n/a',
-            frameRate: frameRate !== 'n/a' ? parseFloat(frameRate) : 'n/a',
-            audioSamplingRate: audioSamplingRate !== 'n/a' ? parseFloat(audioSamplingRate) : 'n/a',
-            segmentDuration: 'n/a' // Default segment duration
-          });
-        });
-      });
-
-      const eventStreams = period.getElementsByTagName('EventStream');
-      Array.from(eventStreams).forEach((eventStream, eventStreamIndex) => {
-        const timescale = parseFloat(eventStream.getAttribute('timescale')) || 1;
-        const streamEvents = eventStream.getElementsByTagName('Event');
-        Array.from(streamEvents).forEach((event, eventIndex) => {
-          const presentationTime = parseFloat(event.getAttribute('presentationTime')) || 0;
-          const duration = parseFloat(event.getAttribute('duration')) || 0;
-          const startTimeInSeconds = presentationTime / timescale;
-          const endTimeInSeconds = (presentationTime + duration) / timescale;
-
-          // Create ISO strings for start and end times
-          let startDate = 'Invalid time';
-          let endDate = 'Invalid time';
-
-          if (!isNaN(startTimeInSeconds) && startTimeInSeconds >= 0) {
-            startDate = new Date(startTimeInSeconds * 1000).toISOString();
-          }
-          if (!isNaN(endTimeInSeconds) && endTimeInSeconds >= 0) {
-            endDate = new Date(endTimeInSeconds * 1000).toISOString();
-          }
-
-          // Calculate duration
-          const durationInSeconds = endTimeInSeconds - startTimeInSeconds;
-          const durationHours = Math.floor(durationInSeconds / 3600);
-          const durationMinutes = Math.floor((durationInSeconds % 3600) / 60);
-          const durationSeconds = (durationInSeconds % 60).toFixed(6);
-          const durationString = `${String(durationHours).padStart(2, '0')}:${String(durationMinutes).padStart(2, '0')}:${String(durationSeconds).padStart(9, '0')}`;
-
-          const messageData = event.textContent;
-          console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
-          console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
-
-          events.push({
-            id: event.getAttribute('id') || 'n/a',
-            start: startDate,
-            end: endDate,
-            duration: durationString
-          });
-        });
-      });
-    });
-
-    console.log('Parsed DASH manifest tracks:', variants);
-    console.log('Parsed DASH events:', events);
-    console.log('Parsed DASH segment timelines:', segmentTimelines);
-    return { tracks: variants, events: events, minimumUpdatePeriod: 5, segmentTimelines, type: mpd.querySelector('MPD').getAttribute('type') };
+        if (result.type === 'dynamic') {
+          const minimumUpdatePeriod = result.minimumUpdatePeriod || 5; // Default to 5 seconds if not specified
+          updateInterval = setInterval(async () => {
+            const updatedResult = await parser.parseManifest(manifestUri);
+            updateTrackTable(updatedResult.tracks);
+            updateEventTable(updatedResult.events);
+            renderMetadataTree(updatedResult.tracks);
+            // Update live edge time
+            if (updatedResult.segmentTimelines.length > 0) {
+              const liveEdgeTime = updatedResult.segmentTimelines[0].segments.slice(-1)[0].live_edge_time;
+              if (toggleManifestTiming.checked) {
+                showLiveEdgeOverlay(liveEdgeTime);
+              }
+            }
+          }, minimumUpdatePeriod * 1000);
+        }
+      } else if (manifestUri.endsWith('.m3u8')) {
+        const tracks = await parseHlsManifest(manifestUri);
+        updateTrackTable(tracks);
+        updateEventTable([]);
+        renderMetadataTree(tracks);
+      }
+    } catch (e) {
+      errorMessage.textContent = 'Error loading manifest';
+      errorMessage.classList.add('text-danger');
+      console.error('Error loading manifest:', e);
+    }
   }
 
-  async parseManifest(uri) {
-    const response = await fetch(uri);
-    const manifestText = await response.text();
-    return this.loadManifest_(manifestText);
+  function resetPlayer() {
+    if (shakaPlayer) {
+      shakaPlayer.destroy().then(() => {
+        shakaPlayer = null;
+        video.pause();
+        video.currentTime = 0;
+        feedback.textContent = 'Active Player: None';
+        errorMessage.textContent = '';
+        customManifestUrl.value = '';
+        manifestSelector.value = '';
+        trackTable.classList.add('hidden');
+        eventTable.classList.add('hidden');
+        hideOverlays();
+        metadataTree.innerHTML = '<h2>Track Information</h2>';
+      });
+    }
   }
-}
+
+  function hideOverlays() {
+    eventOverlay.style.display = 'hidden';
+    liveEdgeOverlay.style.display = 'hidden';
+    mediaTimeOverlay.style.display = 'hidden';
+  }
+});

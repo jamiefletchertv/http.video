@@ -60,7 +60,11 @@ export class CustomManifestParser {
               const d = parseInt(s.getAttribute('d') || '0');
               const r = parseInt(s.getAttribute('r') || '0');
 
-              const liveEdgeTime = (t + d * (r + 1)) / timescale;
+              let liveEdgeTime = t + d / timescale; // Calculate the initial segment end time
+              if (r > 0) {
+                liveEdgeTime += (r * d) / timescale;
+              }
+
               const segmentDurationSeconds = d / timescale;
 
               console.log(`Period ${periodIndex}, AdaptationSet ${adaptationIndex}, Segment ${segmentIndex}`);
@@ -91,7 +95,7 @@ export class CustomManifestParser {
           const frameRate = adaptationSet.getAttribute('frameRate') || 'n/a';
           const audioSamplingRate = adaptationSet.getAttribute('audioSamplingRate') || 'n/a';
 
-          //console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
+          console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
 
           variants.push({
             id: representationId,
@@ -135,8 +139,8 @@ export class CustomManifestParser {
           const durationString = `${String(durationHours).padStart(2, '0')}:${String(durationMinutes).padStart(2, '0')}:${String(durationSeconds).padStart(9, '0')}`;
 
           const messageData = event.textContent;
-          //console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
-          //console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
+          console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
+          console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
 
           events.push({
             id: event.getAttribute('id') || 'n/a',

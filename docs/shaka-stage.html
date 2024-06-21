@@ -6,6 +6,7 @@
   <script src="https://cdn.jsdelivr.net/npm/mux.js@5.7.0/dist/mux.min.js"></script>
   <link rel="stylesheet" href="css/styles-stage.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -13,24 +14,25 @@
     <div class="tv-frame">
       <div class="tv-screen">
         <video id="video" class="video-js vjs-default-skin" controls muted></video>
-        <div id="eventOverlay" class="event-overlay"></div>
-        <div id="liveEdgeOverlay" class="live-edge-overlay"></div>
+        <div id="eventOverlay" class="event-overlay hidden"></div>
+        <div id="liveEdgeOverlay" class="live-edge-overlay hidden"></div>
+        <div id="mediaTimeOverlay" class="media-time-overlay hidden"></div>
       </div>
     </div>
+    <div id="metadataTree" class="metadata-tree"></div>
     <div class="controls">
       <label for="manifestSelector">Select Manifest:</label>
       <select id="manifestSelector" class="form-control">
-        <option value="">-- Select a manifest --</option>
+        <option value="">Select a manifest</option>
         <option value="https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.mpd">Live (DASH)</option>
         <option value="https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8">Live (HLS)</option>
         <option value="https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.mpd">VOD (DASH)</option>
         <option value="https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.m3u8">VOD (HLS)</option>
       </select>
-      <label for="customManifestUrl" class="mt-2">Or Enter Manifest URL:</label>
-      <input type="text" id="customManifestUrl" class="form-control" placeholder="Enter custom manifest URL">
-      <div id="errorMessage" class="error-message text-danger mt-2"></div>
+      <input type="text" id="customManifestUrl" class="form-control mt-2" placeholder="Enter custom manifest URL">
       <button id="playButton" class="btn btn-primary mt-2">Play</button>
       <button id="resetButton" class="btn btn-secondary mt-2">Reset</button>
+      <div id="errorMessage" class="text-danger mt-2"></div>
     </div>
     <div class="toggles mt-4">
       <div class="custom-control custom-switch">
@@ -39,11 +41,13 @@
       </div>
       <div class="custom-control custom-switch">
         <input type="checkbox" class="custom-control-input" id="toggleTimedMetadata">
-        <label class="custom-control-label" for="toggleTimedMetadata">View Timed Metadata Information</label>
+        <label class="custom-control-label" for="toggleTimedMetadata">View Timed
+        Metadata Information (Live + Dash Only)</label>
       </div>
       <div class="custom-control custom-switch">
         <input type="checkbox" class="custom-control-input" id="toggleManifestTiming">
-        <label class="custom-control-label" for="toggleManifestTiming">View Manifest Timing / Live Edge</label>
+        <label class="custom-control-label" for="toggleManifestTiming">View
+        Manifest Timing / Live Edge (Live + Dash Only)</label>
       </div>
     </div>
     <table id="eventTable" class="table table-dark table-striped mt-4 hidden">

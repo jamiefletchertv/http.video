@@ -46,17 +46,11 @@ body {
   margin-bottom: 10px;
 }
 
-.error-message {
-  color: red;
-  font-size: 16px;
-}
-
 .toggles {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
 }
 
 table {
@@ -70,32 +64,79 @@ table {
   display: none;
 }
 
-.highlighted {
-  background-color: red !important;
-}
-
 .event-overlay {
   position: absolute;
-  bottom: 40px;
+  bottom: 45px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
   color: red;
-  padding: 5px 10px;
-  font-size: 20px;
-  border-radius: 5px;
-  display: none;
+  padding: 2px 2px;
+  font-size: 15px;
+  border-radius: 2px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .live-edge-overlay {
   position: absolute;
-  bottom: 100px;
+  bottom: 145px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.7);
   color: red;
   padding: 5px 10px;
-  font-size: 20px;
+  font-size: 15px;
   border-radius: 5px;
   display: none;
+}
+
+.media-time-overlay {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: red;
+  padding: 5px 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+.metadata-tree {
+  position: absolute;
+  right: 50px;
+  top: 65px;
+  background-color: white;
+  color: black;
+  width: 550px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  overflow: auto;
+}
+
+.metadata-tree .track-info {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.tree-header {
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+}
+
+.track-header {
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+}
+
+.track-content {
+  margin-left: 15px;
+  display: none;
+  text-align: left;
 }

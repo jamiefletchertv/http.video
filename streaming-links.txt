@@ -61,6 +61,21 @@ https://playertest.longtailvideo.com/adaptive/elephants_dream_v4/redundant.m3u8>
 https://devoldemar.github.io/streams/hls/bipbop/hevc.m3u8> Advanced stream (HEVC Main 10, MPEG-TS segments)',
 https://bitmovin-a.akamaihd.net/content/dataset/multi-codec/hevc/v720p_ts.m3u8>HLS M2TS by Bitmovin (HEVC Main, many NALUs overflowing PESes, video only)',
 
+
+
+
+https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.mpd">Live SCTE35 DASH Stable</option>
+https://demo.unified-streaming.com/k8s/live/stable/scte35.isml/.m3u8">Live
+SCTE35 HLS Stable</option>
+"https://demo.unified-streaming.com/k8s/live/trunk/scte35.isml/.m3u8",Live SCTE35 HLS Trunk
+"https://demo.unified-streaming.com/k8s/live/trunk/scte35.isml/.mpd",Live SCTE35 DASH Trunk
+https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.mpd">VOD
+S3 Tears of Steel DASH
+https://demo.unified-streaming.com/k8s/features/trunk/usp-s3-storage/tears-of-steel/tears-of-steel.ism/.m3u8">VOD
+S3 Tears of Steel HLS</option>
+
+
+
 ### unified streaming
 "https://dai-gcp-eu-west-1-1.daiconnect.com/live/dash/usp/scte35-stable/.mpd",
 "https://dai-gcp-eu-west-1-1.daiconnect.com/live/dash/usp/vod2live-stable/.mpd",

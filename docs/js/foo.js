@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let shakaPlayer = null;
   let updateInterval = null;
   let mediaTimeInterval = null;
+  let storedManifestUri = null;
+  let storedVBegin = null;
 
   // Play button click event
   playButton.addEventListener('click', () => {
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
       eventOverlay.classList.remove('hidden');
     } else {
       eventTable.classList.add('hidden');
-      eventOverlay.classList.add('hidden');
+      eventOverlay.style.display = 'none';
     }
   });
 
@@ -65,13 +67,38 @@ document.addEventListener('DOMContentLoaded', function () {
       liveEdgeOverlay.classList.remove('hidden');
       mediaTimeOverlay.classList.remove('hidden');
     } else {
-      liveEdgeOverlay.classList.add('hidden');
-      mediaTimeOverlay.classList.add('hidden');
+      liveEdgeOverlay.style.display = 'none';
+      mediaTimeOverlay.style.display = 'none';
     }
   });
 
   // Load the player with the manifest URI
   async function loadPlayer(manifestUri) {
+    const url = new URL(manifestUri);
+    const vbegin = url.searchParams.get('vbegin');
+
+    if (vbegin) {
+      try {
+        const dvrStartTimeSeconds = new Date(vbegin).getTime() / 1000;
+        console.log(`DEBUG - vbegin: ${vbegin}, dvrStartTimeSeconds: ${dvrStartTimeSeconds}`);
+
+        storedManifestUri = manifestUri.split('?')[0]; // Store the manifest URI without query parameters
+        storedVBegin = vbegin; // Store the vbegin parameter
+        initializeShakaPlayer(manifestUri, dvrStartTimeSeconds);
+        console.log(`initializeShakaPlayer with DVR Start Time in Seconds: ${dvrStartTimeSeconds}`);
+      } catch (error) {
+        errorMessage.textContent = 'Error parsing vbegin parameter';
+        errorMessage.classList.add('text-danger');
+        console.error('Error parsing vbegin parameter:', error);
+      }
+    } else {
+      storedManifestUri = manifestUri; // Store the manifest URI
+      initializeShakaPlayer(manifestUri);
+    }
+  }
+
+  async function initializeShakaPlayer(manifestUri, startTimeSeconds = null) {
+    console.log(`Initializing Shaka Player with startTimeSeconds: ${startTimeSeconds}`);
     // Stop the video and clear any existing player instance
     if (shakaPlayer) {
       await shakaPlayer.destroy();
@@ -95,8 +122,21 @@ document.addEventListener('DOMContentLoaded', function () {
     eventTableBody.innerHTML = '';
 
     shakaPlayer = new shaka.Player(video);
+
+    // Listen for streaming events
+    shakaPlayer.addEventListener('streaming', (event) => {
+      const timing = event.detail.timing;
+      console.log('Streaming event timing:', timing);
+    });
+
     try {
-      await shakaPlayer.load(manifestUri);
+      if (startTimeSeconds !== null) {
+        console.log(`Loading Shaka Player with startTimeSeconds: ${startTimeSeconds}`);
+        await shakaPlayer.load(manifestUri, startTimeSeconds);
+      } else {
+        await shakaPlayer.load(manifestUri);
+      }
+
       video.play();
       customManifestUrl.value = ''; // Clear the input field on successful load
       errorMessage.textContent = ''; // Clear any previous error message
@@ -120,12 +160,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const result = await parser.parseManifest(manifestUri);
         updateTrackTable(result.tracks);
         updateEventTable(result.events);
-        renderMetadataTree(result.tracks);
+        renderMetadataTree(result.tracks); // Ensure the metadata tree is populated
 
         if (result.type === 'dynamic') {
           const minimumUpdatePeriod = result.minimumUpdatePeriod || 5; // Default to 5 seconds if not specified
           updateInterval = setInterval(async () => {
-            const updatedResult = await parser.parseManifest(manifestUri);
+            const updatedManifestUri = storedVBegin ? `${storedManifestUri}?vbegin=${storedVBegin}` : storedManifestUri;
+            const updatedResult = await parser.parseManifest(updatedManifestUri); // Use stored manifest URI with query params
             updateTrackTable(updatedResult.tracks);
             updateEventTable(updatedResult.events);
             renderMetadataTree(updatedResult.tracks);
@@ -164,14 +205,21 @@ document.addEventListener('DOMContentLoaded', function () {
         trackTable.classList.add('hidden');
         eventTable.classList.add('hidden');
         hideOverlays();
+        resetToggles();
         metadataTree.innerHTML = '<h2>Track Information</h2>';
       });
     }
   }
 
   function hideOverlays() {
-    eventOverlay.style.display = 'hidden';
-    liveEdgeOverlay.style.display = 'hidden';
-    mediaTimeOverlay.style.display = 'hidden';
+    eventOverlay.style.display = 'none';
+    liveEdgeOverlay.style.display = 'none';
+    mediaTimeOverlay.style.display = 'none';
+  }
+
+  function resetToggles() {
+    toggleTrackInfo.checked = false;
+    toggleTimedMetadata.checked = false;
+    toggleManifestTiming.checked = false;
   }
 });

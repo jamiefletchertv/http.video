@@ -62,21 +62,27 @@ export class CustomManifestParser {
 
               const liveEdgeTime = (t + d * (r + 1)) / timescale;
               const segmentDurationSeconds = d / timescale;
+              const dvrStartTime = t / timescale;
 
-              console.log(`Period ${periodIndex}, AdaptationSet ${adaptationIndex}, Segment ${segmentIndex}`);
-              console.log(`Timescale: ${timescale}`);
+              //console.log(`Period ${periodIndex}, AdaptationSet ${adaptationIndex}, Segment ${segmentIndex}`);
+              //console.log(`Timescale: ${timescale}`);
               console.log(`t: ${t}, d: ${d}, r: ${r}, liveEdgeTime: ${liveEdgeTime}, segmentDurationSeconds: ${segmentDurationSeconds}`);
 
               let liveEdgeTimeIso = 'Invalid time';
+              let dvrStartTimeIso = 'Invalid time';
               if (!isNaN(liveEdgeTime) && liveEdgeTime > 0 && liveEdgeTime < Number.MAX_SAFE_INTEGER) {
                 const liveEdgeDate = new Date(liveEdgeTime * 1000);
+                const dvrStartDate = new Date(dvrStartTime * 1000);
                 if (liveEdgeDate instanceof Date && !isNaN(liveEdgeDate.getTime())) {
                   liveEdgeTimeIso = liveEdgeDate.toISOString();
+                  dvrStartTimeIso = dvrStartDate.toISOString();
+                  
                 }
               }
 
+              console.log(`dvrStartTimeIso: ${dvrStartTimeIso}`);
               console.log(`liveEdgeTimeIso: ${liveEdgeTimeIso}`);
-              segments.push({ t, d, r, live_edge_time: liveEdgeTimeIso, segment_duration_seconds: segmentDurationSeconds });
+              segments.push({ t, d, r, dvr_start_time: dvrStartTimeIso, live_edge_time: liveEdgeTimeIso, segment_duration_seconds: segmentDurationSeconds });
             });
             segmentTimelines.push({ adaptationSet: adaptationSet.getAttribute('id'), segments });
           }
@@ -95,7 +101,7 @@ export class CustomManifestParser {
           const par = adaptationSet.getAttribute('par') || 'n/a';
           const sar = adaptationSet.getAttribute('sar') || 'n/a';
 
-          console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
+          //console.log(`DASH Track: Type: ${type}, Bitrate: ${bandwidth}, ID: ${representationId}`);
 
           variants.push({
             id: representationId,
@@ -143,8 +149,8 @@ export class CustomManifestParser {
           const durationString = `${String(durationHours).padStart(2, '0')}:${String(durationMinutes).padStart(2, '0')}:${String(durationSeconds).padStart(9, '0')}`;
 
           const messageData = event.textContent;
-          console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
-          console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
+          //console.log(`DASH Event: Period ${periodIndex}, EventStream ${eventStreamIndex}, Event ${eventIndex}`);
+          //console.log(`ID: ${event.getAttribute('id')}, Start: ${startDate}, End: ${endDate}, Duration: ${durationString}, Message: ${messageData}`);
 
           events.push({
             id: event.getAttribute('id') || 'n/a',
